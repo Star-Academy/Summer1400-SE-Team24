@@ -13,8 +13,6 @@ public class TypeQuery {
     }
 
     private void splitQuery(String query){
-        ordinary = new ArrayList<>();
-
         var keywords = query.toLowerCase().split(" ");
         for (String keyword : keywords) {
             if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) 

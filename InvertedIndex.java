@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Set;
 
 class InvertedIndex {
+    private final String INCLUDE = "+";
+    private final String EXCLUDE = "-";
     private final String cachePath = "./cache.txt";
     private String path;
     private Map<String, List<Doc>> map;
@@ -17,7 +19,7 @@ class InvertedIndex {
     public Set<Doc> search(String query) {  
 
         TypeQuery typeQuery = new TypeQuery(query);
-        System.out.println(typeQuery.ordinary);
+        // System.out.println(typeQuery.ordinary + " " + typeQuery.include);
 
         var docs = intersection(typeQuery.ordinary);
         union(docs, typeQuery.include);
@@ -30,7 +32,7 @@ class InvertedIndex {
 
         Cache cache = new Cache(cachePath);
         if(cache.cacheExists()) {
-            map = cache.readCache();
+            this.map = cache.readCache();
         }
         else {
 
