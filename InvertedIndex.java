@@ -27,9 +27,9 @@ class InvertedIndex {
             if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) 
                 ordinery.add(keyword);
             else if(keyword.startsWith(INCLUDE)) 
-                include.add(keyword);
+                include.add(keyword.substring(1));
             else 
-                exclude.add(keyword);
+                exclude.add(keyword.substring(1));
         }
 
         var docs = intersection(ordinery);
