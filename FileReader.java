@@ -21,7 +21,7 @@ public class FileReader implements IFileReader{
             String input;
             StringBuilder sb = new StringBuilder();
             while (sc.hasNextLine()) {
-                input = sc.nextLine();
+                input = sc.nextLine().replaceAll("\\W", " ");
                 sb.append(input+" ");
             }
 
