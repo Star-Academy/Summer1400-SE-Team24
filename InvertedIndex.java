@@ -1,17 +1,21 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 class InvertedIndex {  
     private String INCLUDE = "+";
     private String EXCLUDE = "-";
     private String path;
+    private Map<String, List<Doc>> map;
 
     public InvertedIndex(String path) {
         this.path = path;
+        getMap();
     }
 
-    public List<Doc> search(String query) {  
+    public Set<Doc> search(String query) {  
 
         var keywords = query.split(" ");
 
@@ -20,40 +24,85 @@ class InvertedIndex {
         var include = new ArrayList<String>();
 
         for (String keyword : keywords) {
-            if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) {
+            if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) 
                 ordinery.add(keyword);
-            }
-            else if(keyword.startsWith(INCLUDE)) {
+            else if(keyword.startsWith(INCLUDE)) 
                 include.add(keyword);
-            }
-            else {
+            else 
                 exclude.add(keyword);
-            }
         }
 
-        var map = getMap();
-        var docs = new ArrayList<Doc>();
-
-        for (var word : ordinery) {
-            docs.addAll(map.get(word));
-        }
+        var docs = intersection(ordinery);
+        union(docs, include);
+        exclution(docs, exclude);
 
         return docs;
     }  
 
-    public Map<String, List<Doc>> getMap() {
+    private void getMap() {
 
         IFileReader fileReader = new FileReader();
         Mapper mapper = new Mapper();
-        Map<String, List<Doc>> map = null;
+        Map<String, List<Doc>> docMap = null;
 
         try {
             List<Doc> files = fileReader.readFiles(path);
-            map = mapper.map(files);
+            docMap = mapper.map(files);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return map;
+        this.map = docMap;
+    }
+
+    private Set<Doc> intersection(List<String> ordinery) {
+
+        Set<Doc> docs = new HashSet<>();
+
+        if(!ordinery.isEmpty()) {
+            docs.addAll(map.get(ordinery.get(0)));
+        }
+
+        for (var word : ordinery) {
+            var set = docs;
+            docs = new HashSet<>();
+            var list = map.get(word);
+            if(list != null) {
+                for (Doc doc : list) {
+                    if(set.contains(doc)) {
+                        docs.add(doc);
+                    }
+                }
+            }
+            if (docs.isEmpty()) return docs;
+        }
+
+        return docs;
+    }
+
+    private void union(Set<Doc> docs, List<String> include) {
+        for (String word : include) {
+            var list = map.get(word);
+            if(list != null) {
+                for (Doc doc : list) {
+                    if(!docs.contains(doc)) {
+                        docs.add(doc);
+                    }
+                }
+            }
+        }
+    }
+
+    private void exclution(Set<Doc> docs, List<String> exclude) {
+        for (String word : exclude) {
+            var list = map.get(word);
+            if(list != null) {
+                for (Doc doc : list) {
+                    if(docs.contains(doc)) {
+                        docs.remove(doc);
+                    }
+                }
+            }
+        }
     }
 }  
