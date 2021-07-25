@@ -13,7 +13,7 @@ public class Doc {
     }
 
     public String[] getWords() {
-        return docText.toString().split(" ");
+        return docText.toString().split("\\s+");
     }
     @Override
     public String toString() {
