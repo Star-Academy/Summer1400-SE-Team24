@@ -8,6 +8,10 @@ public class Doc {
         this.docText = docText;
     }
 
+    public Doc(String docName) {
+        this.docID = docName;
+    }
+
     public String[] getWords() {
         return docText.toString().toLowerCase().split("\\s+");
     }
