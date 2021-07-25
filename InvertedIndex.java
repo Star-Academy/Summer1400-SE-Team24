@@ -17,7 +17,7 @@ class InvertedIndex {
 
     public Set<Doc> search(String query) {  
 
-        var keywords = query.split(" ");
+        var keywords = query.toLowerCase().split(" ");
 
         var ordinery = new ArrayList<String>();
         var exclude = new ArrayList<String>();

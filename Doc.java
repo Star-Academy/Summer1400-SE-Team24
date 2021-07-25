@@ -9,7 +9,7 @@ public class Doc {
     }
 
     public String[] getWords() {
-        return docText.toString().split("\\s+");
+        return docText.toString().toLowerCase().split("\\s+");
     }
     @Override
     public String toString() {
