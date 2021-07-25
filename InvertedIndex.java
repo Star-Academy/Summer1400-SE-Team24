@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-class InvertedIndex {  
-    private final String INCLUDE = "+";
-    private final String EXCLUDE = "-";
+class InvertedIndex {
     private final String cachePath = "./cache.txt";
     private String path;
     private Map<String, List<Doc>> map;
@@ -18,24 +16,12 @@ class InvertedIndex {
 
     public Set<Doc> search(String query) {  
 
-        var keywords = query.toLowerCase().split(" ");
+        TypeQuery typeQuery = new TypeQuery(query);
+        System.out.println(typeQuery.ordinary);
 
-        var ordinery = new ArrayList<String>();
-        var exclude = new ArrayList<String>();
-        var include = new ArrayList<String>();
-
-        for (String keyword : keywords) {
-            if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) 
-                ordinery.add(keyword);
-            else if(keyword.startsWith(INCLUDE)) 
-                include.add(keyword.substring(1));
-            else 
-                exclude.add(keyword.substring(1));
-        }
-
-        var docs = intersection(ordinery);
-        union(docs, include);
-        exclution(docs, exclude);
+        var docs = intersection(typeQuery.ordinary);
+        union(docs, typeQuery.include);
+        exclution(docs, typeQuery.exclude);
 
         return docs;
     }  
@@ -64,18 +50,18 @@ class InvertedIndex {
         }
     }
 
-    private Set<Doc> intersection(List<String> ordinery) {
+    private Set<Doc> intersection(List<String> ordinary) {
 
         Set<Doc> docs = new HashSet<>();
 
-        if(!ordinery.isEmpty()) {
-            var firstEl = map.get(ordinery.get(0));
+        if(!ordinary.isEmpty()) {
+            var firstEl = map.get(ordinary.get(0));
             if(firstEl != null) {
                 docs.addAll(firstEl);
             }
         }
 
-        for (var word : ordinery) {
+        for (var word : ordinary) {
             var set = docs;
             docs = new HashSet<>();
             var list = map.get(word);
