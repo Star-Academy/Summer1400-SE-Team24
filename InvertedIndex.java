@@ -5,8 +5,9 @@ import java.util.Map;
 import java.util.Set;
 
 class InvertedIndex {  
-    private String INCLUDE = "+";
-    private String EXCLUDE = "-";
+    private final String INCLUDE = "+";
+    private final String EXCLUDE = "-";
+    private final String cachePath = "./cache.txt";
     private String path;
     private Map<String, List<Doc>> map;
 
@@ -41,7 +42,7 @@ class InvertedIndex {
 
     private void getMap() {
 
-        Cache cache = new Cache("./cache.txt");
+        Cache cache = new Cache(cachePath);
         if(cache.cacheExists()) {
             map = cache.readCache();
         }
