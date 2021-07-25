@@ -10,8 +10,8 @@ class InvertedIndex {
     private String path;
     private Map<String, List<Doc>> map;
 
-    public InvertedIndex(String path) {
-        this.path = path;
+    public InvertedIndex(String docPath) {
+        this.path = docPath;
         getMap();
     }
 
@@ -41,18 +41,26 @@ class InvertedIndex {
 
     private void getMap() {
 
-        IFileReader fileReader = new FileReader();
-        Mapper mapper = new Mapper();
-        Map<String, List<Doc>> docMap = null;
-
-        try {
-            List<Doc> files = fileReader.readFiles(path);
-            docMap = mapper.map(files);
-        } catch (Exception e) {
-            e.printStackTrace();
+        Cache cache = new Cache("./cache.txt");
+        if(cache.cacheExists()) {
+            map = cache.readCache();
         }
+        else {
 
-        this.map = docMap;
+            IFileReader fileReader = new FileReader();
+            Mapper mapper = new Mapper();
+            Map<String, List<Doc>> docMap = null;
+            
+            try {
+                List<Doc> files = fileReader.readFiles(path);
+                docMap = mapper.map(files);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            this.map = docMap;
+            cache.saveMap(map);
+        }
     }
 
     private Set<Doc> intersection(List<String> ordinery) {
@@ -60,7 +68,10 @@ class InvertedIndex {
         Set<Doc> docs = new HashSet<>();
 
         if(!ordinery.isEmpty()) {
-            docs.addAll(map.get(ordinery.get(0)));
+            var firstEl = map.get(ordinery.get(0));
+            if(firstEl != null) {
+                docs.addAll(firstEl);
+            }
         }
 
         for (var word : ordinery) {
