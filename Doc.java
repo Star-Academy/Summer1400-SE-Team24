@@ -15,6 +15,9 @@ public class Doc {
     public String[] getWords() {
         return docText.toString().toLowerCase().split("\\s+");
     }
+    public String getName() {
+        return docID;
+    }
     @Override
     public String toString() {
         return String.format("%s", this.docID);

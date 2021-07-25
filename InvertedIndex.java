@@ -65,8 +65,10 @@ class InvertedIndex {
             var list = map.get(word);
             if(list != null) {
                 for (Doc doc : list) {
-                    if(set.contains(doc)) {
-                        docs.add(doc);
+                    for (Doc setDoc : set) {
+                        if(doc.getName().equals(setDoc.getName())) {
+                            docs.add(doc);
+                        }
                     }
                 }
             }
@@ -79,12 +81,16 @@ class InvertedIndex {
     private void union(Set<Doc> docs, List<String> include) {
         for (String word : include) {
             var list = map.get(word);
+            var set = new HashSet<Doc>();
             if(list != null) {
                 for (Doc doc : list) {
-                    if(!docs.contains(doc)) {
-                        docs.add(doc);
+                    for (Doc setDoc : docs) {
+                        if(!setDoc.getName().equals(doc.getName())) {
+                            set.add(doc);
+                        }
                     }
                 }
+                docs.addAll(set);
             }
         }
     }
@@ -94,9 +100,7 @@ class InvertedIndex {
             var list = map.get(word);
             if(list != null) {
                 for (Doc doc : list) {
-                    if(docs.contains(doc)) {
-                        docs.remove(doc);
-                    }
+                    docs.removeIf(d -> d.getName().equals(doc.getName()));
                 }
             }
         }
