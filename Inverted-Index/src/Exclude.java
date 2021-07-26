@@ -10,7 +10,7 @@ class Exclude extends Operation {
     }
 
     @Override
-    public void operate(Set<Doc> docs) {
+    public Set<Doc> operate(Set<Doc> docs) {
         for (String word : keyWords) {
             var list = map.get(word);
             if(list != null) {
@@ -19,5 +19,6 @@ class Exclude extends Operation {
                 }
             }
         }
+        return docs;
     }
 }

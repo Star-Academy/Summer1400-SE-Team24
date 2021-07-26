@@ -10,8 +10,7 @@ class Intersection extends Operation {
     }
 
     @Override
-    public void operate(Set<Doc> docs) {
-        System.out.println("Intersection " + keyWords);
+    public Set<Doc> operate(Set<Doc> docs) {
         if(!keyWords.isEmpty()) {
             var firstEl = map.get(keyWords.get(0));
             if(firstEl != null) {
@@ -31,8 +30,8 @@ class Intersection extends Operation {
                 }
             }
             if (docs.isEmpty()) 
-                return;
+                return docs;
         }
-
+        return docs;
     }
 }

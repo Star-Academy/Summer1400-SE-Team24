@@ -14,7 +14,7 @@ abstract class Operation {
         this.map = map;
     }
 
-    abstract public void operate(Set<Doc> docs);
+    abstract Set<Doc> operate(Set<Doc> docs);
     public static List<Operation> getOps(TypeQuery typeQuery, Map<String, List<Doc>> map){
         List<Operation> ops = new ArrayList<>(){
             {

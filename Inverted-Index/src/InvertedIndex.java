@@ -19,7 +19,7 @@ class InvertedIndex {
         Set<Doc> docs = new HashSet<>();
         List<Operation> ops = Operation.getOps(typeQuery, map);
         for(var op : ops){
-            op.operate(docs);
+            docs = op.operate(docs);
         }
 
         return docs;
