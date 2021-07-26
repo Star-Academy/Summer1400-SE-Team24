@@ -13,22 +13,26 @@ public class FileReader implements IFileReader{
         File filesList[] = directoryPath.listFiles();
         List<Doc> docs = new ArrayList<>();
   
-        Scanner sc = null;
         for(File file : filesList) {
-
-            sc = new Scanner(file);
-
-            String input;
-            StringBuilder sb = new StringBuilder();
-            while (sc.hasNextLine()) {
-                input = sc.nextLine().replaceAll("[^a-zA-Z0-9]"," ");
-                sb.append(input+" ");
-            }
-
-            docs.add(new Doc(file.getName(), sb));
-            sc.close();
+            docs.add(fileToDoc(file));
         }
 
         return docs;
-     }
+    }
+    
+    private Doc fileToDoc(File file) throws IOException {
+
+        Scanner sc = new Scanner(file);
+
+        String input;
+        StringBuilder sb = new StringBuilder();
+
+        while (sc.hasNextLine()) {
+            input = sc.nextLine().replaceAll("[^a-zA-Z0-9]"," ");
+            sb.append(input+" ");
+        }
+        sc.close();
+
+        return new Doc(file.getName(), sb);
+    }
 }
