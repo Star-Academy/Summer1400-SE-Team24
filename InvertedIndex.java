@@ -10,25 +10,27 @@ class InvertedIndex {
 
     public InvertedIndex(String docPath) {
         this.path = docPath;
-        getMap();
+        this.map = getMap();
     }
 
     public Set<Doc> search(String query) {  
 
         TypeQuery typeQuery = new TypeQuery(query);
-
-        var docs = intersection(typeQuery.ordinary);
-        union(docs, typeQuery.include);
-        exclution(docs, typeQuery.exclude);
+        Set<Doc> docs = new HashSet<>();
+        List<Operation> ops = Operation.getOps(typeQuery, map);
+        for(var op : ops){
+            op.operate(docs);
+        }
 
         return docs;
     }  
 
-    private void getMap() {
+
+    private Map<String, List<Doc>> getMap() {
 
         Cache cache = new Cache(cachePath);
         if(cache.cacheExists()) {
-            this.map = cache.readCache();
+            return cache.readCache();
         }
         else {
 
@@ -43,58 +45,14 @@ class InvertedIndex {
                 e.printStackTrace();
             }
             
-            this.map = docMap;
-            cache.saveMap(map);
+            cache.saveMap(docMap);
+
+            return docMap;
         }
     }
+    
 
-    private Set<Doc> intersection(List<String> ordinary) {
+    
 
-        Set<Doc> docs = new HashSet<>();
-
-        if(!ordinary.isEmpty()) {
-            var firstEl = map.get(ordinary.get(0));
-            if(firstEl != null) {
-                docs.addAll(firstEl);
-            }
-        }
-
-        for (var word : ordinary) {
-            var set = docs;
-            docs = new HashSet<>();
-            var list = map.get(word);
-            if(list != null) {
-                for (Doc doc : list) {
-                    if(set.contains(doc)) {
-                        docs.add(doc);
-                    }
-                }
-            }
-            if (docs.isEmpty()) return docs;
-        }
-
-        return docs;
-    }
-
-    private void union(Set<Doc> docs, List<String> include) {
-        for (String word : include) {
-            var list = map.get(word);
-            if(list != null) {
-                for (Doc doc : list) {
-                    docs.add(doc);
-                }
-            }
-        }
-    }
-
-    private void exclution(Set<Doc> docs, List<String> exclude) {
-        for (String word : exclude) {
-            var list = map.get(word);
-            if(list != null) {
-                for (Doc doc : list) {
-                    docs.remove(doc);
-                }
-            }
-        }
-    }
+    
 }  
