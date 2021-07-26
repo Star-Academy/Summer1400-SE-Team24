@@ -25,7 +25,6 @@ class InvertedIndex {
         return docs;
     }  
 
-
     private Map<String, List<Doc>> getMap() {
 
         Cache cache = new Cache(cachePath);
@@ -50,9 +49,4 @@ class InvertedIndex {
             return docMap;
         }
     }
-    
-
-    
-
-    
 }  
