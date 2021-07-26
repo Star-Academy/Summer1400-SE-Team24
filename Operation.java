@@ -17,7 +17,6 @@ abstract class Operation {
 
     abstract public void operate(Set<Doc> docs);
     public static List<Operation> getOps(TypeQuery typeQuery, Map<String, List<Doc>> map){
-        System.out.println("getOps");
         List<Operation> ops = new ArrayList<>(){
             {
                 add(new Intersection(typeQuery.ordinary, map));
@@ -39,7 +38,6 @@ class Intersection extends Operation {
 
     @Override
     public void operate(Set<Doc> docs) {
-        System.out.println("Intersection: ");
         if(!keyWords.isEmpty()) {
             var firstEl = map.get(keyWords.get(0));
             if(firstEl != null) {
@@ -73,7 +71,6 @@ class Union extends Operation {
 
     @Override
     public void operate(Set<Doc> docs) {
-        System.out.println("Union: ");
         for (String word : keyWords) {
             var list = map.get(word);
             if(list != null) {
