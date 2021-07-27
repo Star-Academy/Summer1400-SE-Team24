@@ -1,25 +1,20 @@
-import java.util.Scanner;
-
 public class App {
-    public static void main(String[] args) throws Exception {
-        Scanner cin = new Scanner(System.in);
+    public static void main(String[] args)  {
+        IUserIO io = new ConsoleIO();
 
-        System.out.println("Enter query:");
-        String query = cin.nextLine();
-        cin.close();
+        String query = io.getInput("Enter qury: ");
 
-
-        System.out.println("Viewing results...");
+        io.output("Viewing results...");
 
         InvertedIndex engine = new InvertedIndex("docs");
         var matches = engine.search(query);
 
         if(matches.isEmpty()) {
-            System.out.println("No matches found!");
+            io.output("No matches found!");
         } else {
-            System.out.println("Search results: ");
+            io.output("Search results: ");
             for (Doc doc : matches) {
-                System.out.println(doc);
+                io.output(doc.toString());
             }
         }
     }
