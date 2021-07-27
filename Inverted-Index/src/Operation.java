@@ -7,7 +7,6 @@ abstract class Operation {
     
     protected Map<String, List<Doc>> map;
     protected List<String> keyWords;
-    protected Set<Doc> docs;
 
     Operation(List<String> keyWords, Map<String, List<Doc>> map){
         this.keyWords = keyWords;
