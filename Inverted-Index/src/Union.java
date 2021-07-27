@@ -11,12 +11,7 @@ class Union extends Operation {
     @Override
     public Set<Doc> operate(Set<Doc> docs) {
         for (String word : keyWords) {
-            var list = map.get(word);
-            if(list != null) {
-                for (Doc doc : list) {
-                    docs.add(doc);
-                }
-            }
+            docs.addAll(map.get(word));
         }
         return docs;
     }

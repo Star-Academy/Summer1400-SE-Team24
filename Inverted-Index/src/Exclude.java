@@ -14,9 +14,7 @@ class Exclude extends Operation {
         for (String word : keyWords) {
             var list = map.get(word);
             if(list != null) {
-                for (Doc doc : list) {
-                    docs.remove(doc);
-                }
+                docs.removeAll(list);
             }
         }
         return docs;
