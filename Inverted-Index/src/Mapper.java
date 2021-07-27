@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Mapper {
 
-    public Map<String, List<Doc>> map(List<Doc> docs) {
+    public static Map<String, List<Doc>> map(List<Doc> docs) {
 
         Map<String, List<Doc>> map = new HashMap<>();
 
@@ -14,7 +14,7 @@ public class Mapper {
 
         return map;
     }
-    private void mergeMaps(Map<String, List<Doc>> map, Map<String, Doc> doc) {
+    private static void mergeMaps(Map<String, List<Doc>> map, Map<String, Doc> doc) {
 
         for (var pair : map.entrySet()) {
             var key = pair.getKey();
@@ -40,7 +40,7 @@ public class Mapper {
             }
         }
     }
-    private Map<String, Doc> mapDoc(Doc doc) {
+    private static Map<String, Doc> mapDoc(Doc doc) {
 
         Map<String, Doc> map = new HashMap<>();
 

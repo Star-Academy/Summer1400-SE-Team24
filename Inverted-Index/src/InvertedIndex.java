@@ -34,12 +34,11 @@ class InvertedIndex {
         else {
 
             IFileReader fileReader = new FileReader();
-            Mapper mapper = new Mapper();
             Map<String, List<Doc>> docMap = null;
             
             try {
                 List<Doc> files = fileReader.readFiles(path);
-                docMap = mapper.map(files);
+                docMap = Mapper.map(files);
             } catch (Exception e) {
                 e.printStackTrace();
             }
