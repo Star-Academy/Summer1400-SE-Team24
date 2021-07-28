@@ -1,19 +1,19 @@
+package file_handler;
+
+import java.util.List;
+
 public class Doc {
 
     private String docID;
-    private StringBuilder docText;
+    private List<String> words;
 
-    public Doc(String docName, StringBuilder docText) {
+    public Doc(String docName, List<String> words) {
         this.docID = docName;
-        this.docText = docText;
+        this.words = words;
     }
 
-    public Doc(String docName) {
-        this.docID = docName;
-    }
-
-    public String[] getWords() {
-        return docText.toString().toLowerCase().split("\\s+");
+    public List<String> getWords() {
+        return words;
     }
     public String getName() {
         return docID;
