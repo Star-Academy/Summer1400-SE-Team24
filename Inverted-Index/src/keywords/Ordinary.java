@@ -1,6 +1,4 @@
 package keywords;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import file_handler.Doc;
@@ -13,8 +11,11 @@ public class Ordinary extends Keyword {
     }
 
     @Override
-    public Set<Doc> operate(Set<Doc> docs, List<Doc> newDocs) {
+    public Set<Doc> operate(Set<Doc> docs, Set<Doc> newDocs) {
 
+        if(docs == null) {
+            return newDocs;
+        }
         if(newDocs != null)
             docs.retainAll(newDocs);
         return docs;

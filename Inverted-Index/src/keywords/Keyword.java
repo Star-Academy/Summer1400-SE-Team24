@@ -1,6 +1,5 @@
 package keywords;
 
-import java.util.List;
 import java.util.Set;
 
 import file_handler.Doc;
@@ -15,7 +14,7 @@ public abstract class Keyword {
     public String getWord() {
         return word;
     }
-    public abstract Set<Doc> operate(Set<Doc> docs, List<Doc> newDocs);
+    public abstract Set<Doc> operate(Set<Doc> docs, Set<Doc> newDocs);
 
 }
 

@@ -1,6 +1,5 @@
 package search;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,7 +13,8 @@ public class SearchEngine {
         this.index = index;
     }
     public Set<Doc> search(List<Keyword> keywords) {
-        Set<Doc> docs = new HashSet<>();
+        Set<Doc> docs = null;
+
         for (Keyword keyword : keywords) {
             
             var newDocs = index.get(keyword.getWord());

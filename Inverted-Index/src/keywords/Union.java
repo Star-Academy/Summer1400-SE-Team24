@@ -1,5 +1,4 @@
 package keywords;
-import java.util.List;
 import java.util.Set;
 
 import file_handler.Doc;
@@ -11,7 +10,10 @@ public class Union extends Keyword {
     }
 
     @Override
-    public Set<Doc> operate(Set<Doc> docs, List<Doc> newDocs) {
+    public Set<Doc> operate(Set<Doc> docs, Set<Doc> newDocs) {
+        if(docs == null) {
+            return newDocs;
+        }
         if(newDocs != null)
             docs.addAll(newDocs);
         return docs;

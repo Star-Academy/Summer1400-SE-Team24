@@ -20,9 +20,13 @@ public class QueryParser {
         for (String keyword : words) {
             if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) 
                 keywords.add(new Ordinary(keyword));
-            else if(keyword.startsWith(INCLUDE)) 
+        }
+        for (String keyword : words) {
+            if(keyword.startsWith(INCLUDE)) 
                 keywords.add(new Union(keyword.substring(1)));
-            else 
+        }
+        for (String keyword : words) {
+            if(keyword.startsWith(EXCLUDE)) 
                 keywords.add(new Exclude(keyword.substring(1)));
         }
         return keywords;
