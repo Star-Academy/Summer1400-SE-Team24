@@ -21,6 +21,7 @@ public class App {
             
             File[] documentFiles = directoryReader.getFiles(DOCS_PATH);
             List<Doc> docs = fileReader.convertFilesToDocs(documentFiles);
+            
             Mapper mapper = new Mapper();
             InvertedIndex invertedIndex = new InvertedIndex(docs, mapper);
             SearchEngine engine = new SearchEngine(invertedIndex);

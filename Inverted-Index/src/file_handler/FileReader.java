@@ -3,6 +3,7 @@ package file_handler;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class FileReader {
         List<String> words = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
-            words.add(scanner.nextLine().toLowerCase().replaceAll("[^a-zA-Z0-9]"," "));
+            words.addAll(Arrays.asList(scanner.nextLine().toLowerCase().replaceAll("[^a-zA-Z0-9]"," ").split("\\s+")));
         }
         scanner.close();
 
