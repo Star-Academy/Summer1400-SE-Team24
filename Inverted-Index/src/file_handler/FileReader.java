@@ -18,14 +18,13 @@ public class FileReader {
     }
     public List<String> readFileWords(File file) throws FileNotFoundException  {
 
-        Scanner scanner = new Scanner(file);
-        List<String> words = new ArrayList<>();
-
-        while (scanner.hasNextLine()) {
-            words.addAll(Arrays.asList(scanner.nextLine().toLowerCase().replaceAll("[^a-zA-Z0-9]"," ").split("\\s+")));
+        try (Scanner scanner = new Scanner(file)) {
+            List<String> words = new ArrayList<>();
+    
+            while (scanner.hasNextLine()) {
+                words.addAll(Arrays.asList(scanner.nextLine().toLowerCase().replaceAll("[^a-zA-Z0-9]"," ").split("\\s+")));
+            }
+            return words;
         }
-        scanner.close();
-
-        return words;
     }
 }
