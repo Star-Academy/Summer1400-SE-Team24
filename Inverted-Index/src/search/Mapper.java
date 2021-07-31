@@ -8,8 +8,25 @@ import file_handler.Doc;
 
 public class Mapper {
 
+    public Map<String, Set<Doc>> convertDocToMap(Doc doc) {
+
+        Map<String, Set<Doc>> map = new HashMap<>();
+        var docList = new HashSet<Doc>();
+        docList.add(doc);
+
+        for (var word : doc.getWords()) {
+            map.put(word, docList);
+        }
+        return map;
+    }
     public Map<String, Set<Doc>> mergeMaps(Map<String, Set<Doc>> map, Map<String, Set<Doc>> doc) {
 
+        appendSameKeys(map, doc);
+        addDiffrentKeys(map, doc);
+
+        return map;
+    }
+    public void appendSameKeys(Map<String, Set<Doc>> map, Map<String, Set<Doc>> doc) {
         for (var pair : map.entrySet()) {
             var key = pair.getKey();
             if(doc.containsKey(key)) {
@@ -19,7 +36,8 @@ public class Mapper {
                 map.put(key, mapValues);
             }
         }
-
+    }
+    public void addDiffrentKeys(Map<String, Set<Doc>> map, Map<String, Set<Doc>> doc) {
         for (var pair : doc.entrySet()) {
             var key = pair.getKey();
             if(map.containsKey(key)) {
@@ -31,17 +49,5 @@ public class Mapper {
                 
             }
         }
-        return map;
-    }
-    public Map<String, Set<Doc>> convertDocToMap(Doc doc) {
-
-        Map<String, Set<Doc>> map = new HashMap<>();
-        var docList = new HashSet<Doc>();
-        docList.add(doc);
-
-        for (var word : doc.getWords()) {
-            map.put(word, docList);
-        }
-        return map;
     }
 }
