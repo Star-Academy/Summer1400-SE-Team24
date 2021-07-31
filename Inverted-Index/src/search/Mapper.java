@@ -26,26 +26,26 @@ public class Mapper {
 
         return map;
     }
-    public void appendSameKeys(Map<String, Set<Doc>> map, Map<String, Set<Doc>> doc) {
-        for (var pair : map.entrySet()) {
+    public void appendSameKeys(Map<String, Set<Doc>> baseMap, Map<String, Set<Doc>> additionalMap) {
+        for (var pair : baseMap.entrySet()) {
             var key = pair.getKey();
-            if(doc.containsKey(key)) {
-                var docValues = doc.get(key);
-                var mapValues = map.get(key);
+            if(additionalMap.containsKey(key)) {
+                var docValues = additionalMap.get(key);
+                var mapValues = baseMap.get(key);
                 mapValues.addAll(docValues);
-                map.put(key, mapValues);
+                baseMap.put(key, mapValues);
             }
         }
     }
-    public void addDiffrentKeys(Map<String, Set<Doc>> map, Map<String, Set<Doc>> doc) {
-        for (var pair : doc.entrySet()) {
+    public void addDiffrentKeys(Map<String, Set<Doc>> baseMap, Map<String, Set<Doc>> additionalMap) {
+        for (var pair : additionalMap.entrySet()) {
             var key = pair.getKey();
-            if(map.containsKey(key)) {
+            if(baseMap.containsKey(key)) {
                 continue;
             } else {
                 var set = new HashSet<Doc>();
                 set.addAll(pair.getValue());
-                map.put(key, set);
+                baseMap.put(key, set);
                 
             }
         }
