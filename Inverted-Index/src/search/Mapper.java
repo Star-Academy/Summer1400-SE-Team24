@@ -10,7 +10,7 @@ public class Mapper {
 
     public Map<String, Set<Doc>> convertDocToMap(Doc doc) {
 
-        Map<String, Set<Doc>> map = new HashMap<>();
+        var map = new HashMap<String, Set<Doc>>();
         var docList = new HashSet<Doc>();
         docList.add(doc);
 
