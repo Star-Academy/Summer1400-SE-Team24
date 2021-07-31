@@ -1,5 +1,6 @@
 package user_interface;
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -10,11 +11,16 @@ public class ConsoleIO implements IUserIO {
     @Override
     public String get() {
         System.out.println("Enter query: ");
-        Scanner scanner = new Scanner(System.in);
-        String text = scanner.nextLine();
-        scanner.close();
 
-        return text;
+        try (Scanner scanner = new Scanner(System.in)) {
+            if(scanner.hasNextLine())
+                return scanner.nextLine();
+            throw new IOException();
+            
+        } catch (IOException error) {
+            error.printStackTrace();
+            return null;
+        }
     }
 
     @Override
