@@ -12,7 +12,7 @@ public class DirectoryReader implements IDirectoryReader {
         if(path.isDirectory()) {
             return path.listFiles();
         }
-        else throw new NotADirectoryException(dirPath);
+        throw new NotADirectoryException(dirPath);
     }
     
 }
