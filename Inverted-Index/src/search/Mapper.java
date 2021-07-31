@@ -39,7 +39,7 @@ public class Mapper {
         var docList = new HashSet<Doc>();
         docList.add(doc);
 
-        for (String word : doc.getWords()) {
+        for (var word : doc.getWords()) {
             map.put(word, docList);
         }
         return map;

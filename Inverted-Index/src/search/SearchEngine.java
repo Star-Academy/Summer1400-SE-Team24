@@ -15,7 +15,7 @@ public class SearchEngine {
     public Set<Doc> search(List<Keyword> keywords) {
         Set<Doc> docs = null;
 
-        for (Keyword keyword : keywords) {
+        for (var keyword : keywords) {
             
             var newDocs = index.get(keyword.getWord());
             docs = keyword.operate(docs, newDocs);

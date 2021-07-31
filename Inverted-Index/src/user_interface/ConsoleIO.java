@@ -19,7 +19,7 @@ public class ConsoleIO implements IUserIO {
 
     @Override
     public void printResult(Set<Doc> result) {
-        for (Doc doc : result) {
+        for (var doc : result) {
             System.out.println(doc.toString());
         }
     }

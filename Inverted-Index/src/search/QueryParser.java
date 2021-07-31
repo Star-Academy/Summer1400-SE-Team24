@@ -17,15 +17,15 @@ public class QueryParser {
 
         List<Keyword> keywords = new ArrayList<>();
 
-        for (String keyword : words) {
+        for (var keyword : words) {
             if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) 
                 keywords.add(new Ordinary(keyword));
         }
-        for (String keyword : words) {
+        for (var keyword : words) {
             if(keyword.startsWith(INCLUDE)) 
                 keywords.add(new Union(keyword.substring(1)));
         }
-        for (String keyword : words) {
+        for (var keyword : words) {
             if(keyword.startsWith(EXCLUDE)) 
                 keywords.add(new Exclude(keyword.substring(1)));
         }
