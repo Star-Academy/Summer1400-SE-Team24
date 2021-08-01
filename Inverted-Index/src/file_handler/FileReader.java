@@ -22,7 +22,9 @@ public class FileReader {
             List<String> words = new ArrayList<>();
     
             while (scanner.hasNextLine()) {
-                words.addAll(Arrays.asList(scanner.nextLine().toLowerCase().replaceAll("[^a-zA-Z0-9]"," ").split("\\s+")));
+                String line = scanner.nextLine().toLowerCase();
+                String[] lineWords = line.replaceAll("[^a-zA-Z0-9]"," ").split("\\s+");
+                words.addAll(Arrays.asList(lineWords));
             }
             return words;
         }
