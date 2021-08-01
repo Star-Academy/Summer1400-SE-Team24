@@ -4,3 +4,6 @@ Inverted-Index/bin
 Inverted-Index/cache.txt
 .vscode
 *.jar
+/docs 
+/bin 
+cache.txt
