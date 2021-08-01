@@ -9,14 +9,14 @@ import java.util.Scanner;
 
 public class FileReader {
 
-    public List<Doc> convertFilesToDocs(File[] files) throws FileNotFoundException {
+    public List<Doc> getFilesDocs(File[] files) throws FileNotFoundException {
         var docs = new ArrayList<Doc>();
         for (File file : files) {
-            docs.add(new Doc(file.getName(), readFileWords(file)));
+            docs.add(new Doc(file.getName(), getFilesWords(file)));
         }
         return docs;
     }
-    public List<String> readFileWords(File file) throws FileNotFoundException  {
+    public List<String> getFilesWords(File file) throws FileNotFoundException  {
 
         try (Scanner scanner = new Scanner(file)) {
             List<String> words = new ArrayList<>();

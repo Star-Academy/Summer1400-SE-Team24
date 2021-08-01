@@ -8,7 +8,7 @@ import file_handler.Doc;
 
 public class Mapper {
 
-    public Map<String, Set<Doc>> convertDocToMap(Doc doc) {
+    public Map<String, Set<Doc>> getDocMap(Doc doc) {
 
         var map = new HashMap<String, Set<Doc>>();
         var docList = new HashSet<Doc>();

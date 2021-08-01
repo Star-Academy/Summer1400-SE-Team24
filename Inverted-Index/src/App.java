@@ -20,7 +20,7 @@ public class App {
         try {
             
             File[] documentFiles = directoryReader.getFiles(DOCS_PATH);
-            var docs = fileReader.convertFilesToDocs(documentFiles);
+            var docs = fileReader.getFilesDocs(documentFiles);
             
             Mapper mapper = new Mapper();
             InvertedIndex invertedIndex = new InvertedIndex(docs, mapper);

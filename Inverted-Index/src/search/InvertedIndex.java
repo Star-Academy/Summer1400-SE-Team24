@@ -13,7 +13,7 @@ public class InvertedIndex {
         map = new HashMap<>();
 
         for (var doc : docs) 
-            map = mapper.mergeMaps(map, mapper.convertDocToMap(doc));
+            map = mapper.mergeMaps(map, mapper.getDocMap(doc));
     }
   
     public Set<Doc> get(String word) {

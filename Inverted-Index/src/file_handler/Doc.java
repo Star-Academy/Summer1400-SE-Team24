@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Doc {
 
-    private String docID;
+    private String docName;
     private List<String> words;
 
     public Doc(String docName, List<String> words) {
-        this.docID = docName;
+        this.docName = docName;
         this.words = words;
     }
 
@@ -16,24 +16,24 @@ public class Doc {
         return words;
     }
     public String getName() {
-        return docID;
+        return docName;
     }
 
     @Override
     public boolean equals(Object obj) {
         if(obj != null && obj.getClass().equals(this.getClass())) {
             final Doc doc = (Doc)obj;
-            return this.docID.equals(doc.docID);
+            return this.docName.equals(doc.docName);
         }
         return false;
     }
     @Override
     public int hashCode() {
-        return this.docID.hashCode();
+        return this.docName.hashCode();
     }
 
     @Override
     public String toString() {
-        return String.format("%s", this.docID);
+        return String.format("%s", this.docName);
     }
 }
