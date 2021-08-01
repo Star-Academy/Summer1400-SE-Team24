@@ -4,15 +4,8 @@ import java.util.Set;
 
 import file_handler.Doc;
 
-public abstract class Keyword {
-    
-    protected String word;
+public interface Keyword {
 
-    protected Keyword(String word){
-        this.word = word;
-    }
-    public String getWord() {
-        return word;
-    }
-    public abstract Set<Doc> operate(Set<Doc> docs, Set<Doc> newDocs);
+    public String getWord();
+    public Set<Doc> operate(Set<Doc> docs, Set<Doc> newDocs);
 }

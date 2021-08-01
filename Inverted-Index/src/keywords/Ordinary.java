@@ -3,11 +3,16 @@ import java.util.Set;
 
 import file_handler.Doc;
 
-public class Ordinary extends Keyword {
+public class Ordinary implements Keyword {
 
+    private String word;
 
     public Ordinary(String word){
-        super(word);
+        this.word = word;
+    }
+
+    public String getWord() {
+        return word;
     }
 
     @Override
