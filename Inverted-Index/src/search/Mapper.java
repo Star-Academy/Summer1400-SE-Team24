@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import file_handler.Doc;
 
@@ -21,33 +22,49 @@ public class Mapper {
     }
     public Map<String, Set<Doc>> mergeMaps(Map<String, Set<Doc>> map, Map<String, Set<Doc>> doc) {
 
-        appendSameKeys(map, doc);
-        addDiffrentKeys(map, doc);
+        Map<String, Set<Doc>> newMap;
 
-        return map;
+        newMap = appendSameKeys(map, doc);
+        newMap = addDiffrentKeys(newMap, doc);
+
+        return newMap;
     }
-    public void appendSameKeys(Map<String, Set<Doc>> baseMap, Map<String, Set<Doc>> additionalMap) {
+    public Map<String, Set<Doc>> appendSameKeys(Map<String, Set<Doc>> baseMap, Map<String, Set<Doc>> additionalMap) {
+        
         for (var pair : baseMap.entrySet()) {
-            var key = pair.getKey();
-            if(additionalMap.containsKey(key)) {
-                var docValues = additionalMap.get(key);
-                var mapValues = baseMap.get(key);
-                mapValues.addAll(docValues);
-                baseMap.put(key, mapValues);
-            }
+            baseMap = appendPairValues(baseMap, additionalMap, pair);
         }
+        return baseMap;
     }
-    public void addDiffrentKeys(Map<String, Set<Doc>> baseMap, Map<String, Set<Doc>> additionalMap) {
-        for (var pair : additionalMap.entrySet()) {
-            var key = pair.getKey();
-            if(baseMap.containsKey(key)) {
-                continue;
-            } else {
-                var set = new HashSet<Doc>();
-                set.addAll(pair.getValue());
-                baseMap.put(key, set);
-                
-            }
+    public Map<String, Set<Doc>> appendPairValues(Map<String, Set<Doc>> baseMap, Map<String, Set<Doc>> additionalMap, Entry<String, Set<Doc>> pair) {
+        
+        var key = pair.getKey();
+        if(additionalMap.containsKey(key)) {
+            var docValues = additionalMap.get(key);
+            var mapValues = baseMap.get(key);
+            mapValues.addAll(docValues);
+            baseMap.put(key, mapValues);
         }
+
+        return baseMap;
+    }
+    public Map<String, Set<Doc>> addDiffrentKeys(Map<String, Set<Doc>> baseMap, Map<String, Set<Doc>> additionalMap) {
+
+        for (var pair : additionalMap.entrySet()) {
+            baseMap = addPair(baseMap, pair);
+        }
+
+        return baseMap;
+    }
+    public Map<String, Set<Doc>> addPair(Map<String, Set<Doc>> baseMap, Entry<String, Set<Doc>> pair) {
+        
+        var key = pair.getKey();
+        if(!baseMap.containsKey(key)) {
+            var set = new HashSet<Doc>();
+            set.addAll(pair.getValue());
+            baseMap.put(key, set);
+        }
+
+        return baseMap;
     }
 }
