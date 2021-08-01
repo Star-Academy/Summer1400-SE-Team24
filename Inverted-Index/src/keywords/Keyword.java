@@ -15,10 +15,4 @@ public abstract class Keyword {
         return word;
     }
     public abstract Set<Doc> operate(Set<Doc> docs, Set<Doc> newDocs);
-
 }
-
-
-
-
-
