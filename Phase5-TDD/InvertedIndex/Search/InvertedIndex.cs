@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-using System.Collections;
+using InvertedIndex.FileHandler;
 
 namespace InvertedIndex.Search
 {

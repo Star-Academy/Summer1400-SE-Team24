@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System;
-using System.Collections;
+using InvertedIndex.Keywords;
+using InvertedIndex.FileHandler;
 
 namespace InvertedIndex.Search
 {
-    public class Mapper
+    public class SearchEngine
     {
         private InvertedIndex index;
 

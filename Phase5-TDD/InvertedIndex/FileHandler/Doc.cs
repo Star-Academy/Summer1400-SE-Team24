@@ -1,5 +1,5 @@
 using System;
-using System.Globalization;
+using System.Collections.Generic;
 
 namespace InvertedIndex.FileHandler
 {
@@ -14,7 +14,7 @@ namespace InvertedIndex.FileHandler
             this.words = words;
         }
 
-        public List<string> getWords()
+        public IList<string> getWords()
         {
             return words;
         }
@@ -40,7 +40,7 @@ namespace InvertedIndex.FileHandler
             throw new NotImplementedException();
         }
 
-        public override ToString()
+        public override string ToString()
         {
             throw new NotImplementedException();
         }

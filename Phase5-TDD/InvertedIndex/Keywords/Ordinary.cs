@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using InvertedIndex.FileHandler;
 
 namespace InvertedIndex.Keywords
 {
-    public class Ordinary : Keywords
+    public class Ordinary : Keyword
     {
         private string word;
 
@@ -16,7 +17,7 @@ namespace InvertedIndex.Keywords
         {
             return word;
         }
-        public override HashSet<Doc> operate(HashSet<Doc> docs, HashSet<Doc> newDocs)
+        public HashSet<Doc> operate(HashSet<Doc> docs, HashSet<Doc> newDocs)
         {
             throw new NotImplementedException();
         }

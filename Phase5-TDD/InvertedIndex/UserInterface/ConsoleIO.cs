@@ -1,6 +1,7 @@
-using Internal;
-using System;
-using System.Transactions;
+
+using InvertedIndex.FileHandler;
+using System.Collections.Generic;
+
 
 namespace InvertedIndex.UserInterface
 {
@@ -8,6 +9,6 @@ namespace InvertedIndex.UserInterface
     {
         string get();
 
-        void printResult(HashsSet<Doc> result);
+        void printResult(HashSet<Doc> result);
     }
 }

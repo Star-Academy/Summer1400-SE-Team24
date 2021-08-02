@@ -1,8 +1,11 @@
+using System;
+using System.IO;
+
 namespace InvertedIndex.FileHandler
 {
     public class DirectoryReader : IDirectoryReader
     {
-        public override File[] getFiles(string dirPath)
+        public FileInfo[] getFiles(string dirPath)
         {
             throw new NotImplementedException();
         }

@@ -1,17 +1,17 @@
-using Internal;
 using System;
-using System.Transactions;
+using System.Collections.Generic;
+using InvertedIndex.FileHandler;
 
 namespace InvertedIndex.UserInterface
 {
     public class ConsoleIO : IUserIO
     {
-        public override string get()
+        public string get()
         {
             throw new NotImplementedException();
         }
 
-        public void printResult(HashsSet<Doc> result)
+        public void printResult(HashSet<Doc> result)
         {
             throw new NotImplementedException();
         }

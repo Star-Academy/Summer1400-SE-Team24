@@ -4,6 +4,6 @@ namespace InvertedIndex.FileHandler
 {
     public interface IDirectoryReader
     {
-        File[] getFiles(string path);
+        FileInfo[] getFiles(string path);
     }    
 }
