@@ -4,3 +4,10 @@ Inverted-Index/bin
 Inverted-Index/cache.txt
 .vscode
 *.jar
+Phase5-TDD/.vscode 
+Phase5-TDD/*/bin
+Phase5-TDD/InvertedIndex/obj
+Phase5-TDD/InvertedIndex.Test/bin
+Phase5-TDD/InvertedIndex.Test/obj
+bin
+obj
