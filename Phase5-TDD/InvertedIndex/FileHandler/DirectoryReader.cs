@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using InvertedIndex.Exceptions;
 
 namespace InvertedIndex.FileHandler
 {
@@ -7,7 +8,11 @@ namespace InvertedIndex.FileHandler
     {
         public FileInfo[] getFiles(string dirPath)
         {
-            throw new NotImplementedException();
+            var path = new DirectoryInfo(dirPath);
+            if(path.Exists) {
+                return path.GetFiles();
+            }
+            throw new NotADirectoryException(dirPath);
         }
     }
 }

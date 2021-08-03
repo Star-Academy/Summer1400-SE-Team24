@@ -8,7 +8,7 @@ namespace InvertedIndex.FileHandler
         private string docName;
         private IList<string> words;
 
-        public Doc(string docName, List<string> words)
+        public Doc(string docName, IList<string> words)
         {
             this.docName = docName;
             this.words = words;
@@ -31,18 +31,18 @@ namespace InvertedIndex.FileHandler
             {
                 return false;
             }
-            
-            throw new NotImplementedException();
+            Doc doc = (Doc)obj;
+            return this.docName.Equals(doc.docName);
         }
         
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            return this.docName.GetHashCode();
         }
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return $"{this.docName}";
         }
     }
 }

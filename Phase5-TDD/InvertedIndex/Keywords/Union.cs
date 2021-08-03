@@ -14,13 +14,18 @@ namespace InvertedIndex.Keywords
             this.word = word;
         }
 
-        public string getWord()
+        public string GetWord()
         {
             return word;
         }
-        public HashSet<Doc> operate(HashSet<Doc> docs, HashSet<Doc> newDocs)
+        public HashSet<Doc> Operate(HashSet<Doc> docs, HashSet<Doc> newDocs)
         {
-            throw new NotImplementedException();
+            if(docs == null) {
+            return newDocs;
+            }
+            if(newDocs != null)
+                docs.UnionWith(newDocs);
+            return docs;
         }
     }
 }

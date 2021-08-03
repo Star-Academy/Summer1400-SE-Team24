@@ -15,7 +15,14 @@ namespace InvertedIndex.Search
         }
         public HashSet<Doc> search(IList<Keyword> keywords)
         {
-            throw new NotImplementedException();
+            HashSet<Doc> docs = null;
+
+            foreach(var keyword in keywords) {
+                
+                var newDocs = index.get(keyword.GetWord());
+                docs = keyword.Operate(docs, newDocs);
+            }
+            return docs;
         }
     }
 }

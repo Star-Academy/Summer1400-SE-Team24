@@ -10,12 +10,15 @@ namespace InvertedIndex.Search
 
         public InvertedIndex(IList<Doc> docs, Mapper mapper)
         {
-            throw new NotImplementedException();
+            map = new Dictionary<string, HashSet<Doc>>();
+
+            foreach (var doc in docs) 
+                map = mapper.mergeMaps(map, mapper.getDocMap(doc));
         }
 
         public HashSet<Doc> get(string word)
         {
-            throw new NotImplementedException();
+            return map[word];
         }
     }
 }
