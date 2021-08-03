@@ -17,13 +17,13 @@ namespace InvertedIndex.Test
             docs.Add(new Doc("1", new List<string>(){"some", "words", "are", "here"}));
             docs.Add(new Doc("2", new List<string>(){"some", "another", "words"}));
             newDocs = new HashSet<Doc>();
-            docs.Add(new Doc("1", new List<string>(){"some", "words", "are", "here"}));
-            docs.Add(new Doc("4", new List<string>(){"here"}));
+            newDocs.Add(new Doc("1", new List<string>(){"some", "words", "are", "here"}));
+            newDocs.Add(new Doc("4", new List<string>(){"here"}));
         }
 
         public void Dispose()
         {
-            var result = keyword.operate(docs, newDocs);
+            var result = keyword.Operate(docs, newDocs);
             Assert.Equal(expected_result, result);
         }
 
