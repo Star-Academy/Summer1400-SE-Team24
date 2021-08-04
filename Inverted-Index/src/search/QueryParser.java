@@ -17,31 +17,37 @@ public class QueryParser {
         var words = query.toLowerCase().split(" ");
         List<Keyword> keywords = new ArrayList<>();
 
-        keywords = addOrdineries(words, keywords);
-        keywords = addUnion(words, keywords);
-        keywords = addExclude(words, keywords);
-
+        keywords.addAll(getOrdinaries(words));
+        keywords.addAll(getUnions(words));
+        keywords.addAll(getExcludes(words));
+        
         return keywords;
     }
-    public List<Keyword> addOrdineries(String[] words, List<Keyword> keywords) {
+    public List<Keyword> getOrdinaries(String[] words) {
+
+        var ordinaries = new ArrayList<Keyword>();
         for (var keyword : words) {
             if(!keyword.startsWith(INCLUDE) && !keyword.startsWith(EXCLUDE)) 
-                keywords.add(new Ordinary(keyword));
+                ordinaries.add(new Ordinary(keyword));
         }
-        return keywords;
+        return ordinaries;
     }
-    public List<Keyword> addUnion(String[] words, List<Keyword> keywords) {
+    public List<Keyword> getUnions(String[] words) {
+
+        var additionals = new ArrayList<Keyword>();
         for (var keyword : words) {
             if(keyword.startsWith(INCLUDE)) 
-                keywords.add(new Union(keyword.substring(1)));
+                additionals.add(new Union(keyword.substring(1)));
         }
-        return keywords;
+        return additionals;
     }
-    public List<Keyword> addExclude(String[] words, List<Keyword> keywords) {
+    public List<Keyword> getExcludes(String[] words) {
+
+        var excludes = new ArrayList<Keyword>();
         for (var keyword : words) {
             if(keyword.startsWith(EXCLUDE)) 
-                keywords.add(new Exclude(keyword.substring(1)));
+                excludes.add(new Exclude(keyword.substring(1)));
         }
-        return keywords;
+        return excludes;
     }
 }
