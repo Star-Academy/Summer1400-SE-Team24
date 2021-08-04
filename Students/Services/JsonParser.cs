@@ -6,12 +6,11 @@ namespace Students
 {
     public class JsonParser
     {
-        public static IList<T> readList<T>(string path)
+        public static IList<T> ReadList<T>(string path)
         {
             StreamReader reader = new StreamReader(path);
             string content = reader.ReadToEnd();
-            List<T> data = JsonConvert.DeserializeObject<List<T>>(content);
-            return data;
+            return JsonConvert.DeserializeObject<List<T>>(content);
         }
     }
 }
