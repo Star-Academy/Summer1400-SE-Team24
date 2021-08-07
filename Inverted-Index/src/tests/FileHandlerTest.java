@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import org.junit.Before;
 
-import exceptions.NotADirectoryException;
+import exceptions.NotDirectoryException;
 import file_handler.DirectoryReader;
 import file_handler.Doc;
 import file_handler.FileReader;
@@ -20,7 +20,7 @@ public class FileHandlerTest {
     private File[] testFiles;
 
     @Before
-    public void getTestDocs() throws NotADirectoryException, FileNotFoundException {
+    public void getTestDocs() throws NotDirectoryException, FileNotFoundException {
         IDirectoryReader reader = new DirectoryReader();
         testFiles = reader.getFiles("C:\\Repos\\Summer1400-SE-Team24\\Inverted-Index\\src\\tests\\docs");
         Assert.assertEquals(8, testFiles.length);
