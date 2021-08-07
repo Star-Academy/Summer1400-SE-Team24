@@ -8,9 +8,11 @@ namespace Students
     {
         public static IList<T> ReadList<T>(string path)
         {
-            StreamReader reader = new StreamReader(path);
-            string content = reader.ReadToEnd();
-            return JsonConvert.DeserializeObject<List<T>>(content);
+            using (var reader = new StreamReader(path))
+            {
+                string content = reader.ReadToEnd();
+                return JsonConvert.DeserializeObject<List<T>>(content);
+            }
         }
     }
 }
