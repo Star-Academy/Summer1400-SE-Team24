@@ -26,17 +26,20 @@ public class KeywordsTest {
     private final Doc DOC_TEST3 = new Doc("3", SAMPLE_WORDS);
     private final String DUMMY_WORD = "dummyword";
 
+    private void initDocs() {
+        docs = new HashSet<>();
+        docs.add(DOC_TEST1);
+        docs.add(DOC_TEST2);
+    
+        newDocs = new HashSet<>();
+        newDocs.add(DOC_TEST3);
+        newDocs.add(DOC_TEST1);
+    }
     @Before
     public void beforeTest(){
         expectedResult = new HashSet<>();
 
-        docs = new HashSet<>();
-        docs.add(DOC_TEST1);
-        docs.add(DOC_TEST2);
-
-        newDocs = new HashSet<>();
-        newDocs.add(DOC_TEST3);
-        newDocs.add(DOC_TEST1);
+        initDocs();
     }
 
     @Test

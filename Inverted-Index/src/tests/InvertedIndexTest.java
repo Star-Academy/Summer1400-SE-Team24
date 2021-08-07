@@ -29,18 +29,22 @@ public class InvertedIndexTest {
     @Mock
     Mapper mapper;
 
+    private void initDocSet() {
+        docSet = new HashSet<>();
+    
+        docSet.add(new Doc("1", new ArrayList<>()));
+        docSet.add(new Doc("2", new ArrayList<>()));
+        docSet.add(new Doc("3", new ArrayList<>()));
+    }
     @Before
     public void init() {
 
         index = new InvertedIndex(new ArrayList<>() {
             {add(new Doc("1", new ArrayList<>()));}
         }, mapper);
-        docSet = new HashSet<>();
 
-        docSet.add(new Doc("1", new ArrayList<>()));
-        docSet.add(new Doc("2", new ArrayList<>()));
-        docSet.add(new Doc("3", new ArrayList<>()));
-
+        initDocSet();
+        
         mockMap = new HashMap<>();
         mockMap.put(KEY, docSet);
     }

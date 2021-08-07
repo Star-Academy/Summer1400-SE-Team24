@@ -47,22 +47,18 @@ public class SearchEngineTest {
         DOC3 = new Doc("59519", new ArrayList<>());
     }
 
-    @Before
-    public void mockResources() {
-        var mockKeywords = Arrays.asList(ordinary, union, exclude);
-        when(parser.parseQuery(anyString())).thenReturn(mockKeywords);
-
+    private void mockKeywords() {
         when(ordinary.getWord()).thenReturn(ORDINARY_WORD);
         when(union.getWord()).thenReturn(UNION_WORD);
         when(exclude.getWord()).thenReturn(EXCLUDE_WORD);
-
+    
         when(ordinary.operate(any(), any())).thenReturn(new HashSet<Doc>() {
             {
                 add(DOC1);
                 add(DOC2);
             }
         });
-
+    
         when(union.operate(any(), any())).thenReturn(new HashSet<Doc>() {
             {
                 add(DOC1);
@@ -70,14 +66,16 @@ public class SearchEngineTest {
                 add(DOC3);
             }
         });
-
+    
         when(exclude.operate(any(), any())).thenReturn(new HashSet<Doc>() {
             {
                 add(DOC2);
                 add(DOC3);
             }
         });
+    }
 
+    private void mockIndex() {
         when(index.get(ORDINARY_WORD)).thenReturn(new HashSet<Doc>() {
             {
                 add(DOC1);
@@ -90,6 +88,16 @@ public class SearchEngineTest {
         when(index.get(EXCLUDE_WORD)).thenReturn(new HashSet<Doc>() {
             {add(DOC1);}
         });
+    }
+    
+    @Before
+    public void mockResources() {
+        var mockKeywords = Arrays.asList(ordinary, union, exclude);
+        when(parser.parseQuery(anyString())).thenReturn(mockKeywords);
+        
+        mockKeywords();
+
+        mockIndex();
     }
     @Test
     public void searchEngineTest() {

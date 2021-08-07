@@ -29,7 +29,7 @@ public class MapperTest {
         DOC_TEST1 = new Doc("1", Arrays.asList(WORD1, WORD2, WORD3));
         DOC_TEST2 = new Doc("2", new ArrayList<>());
     }
-    
+
     @Before
     public void initSets() {
 
