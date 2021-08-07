@@ -10,11 +10,21 @@ namespace Students.Services
 
         public StudentsService(IList<Student> students, IList<Grade> grades)
         {
-            _students = students.Select(s => 
+            IDictionary<int, IList<decimal>> gradesDic = new Dictionary<int, IList<decimal>>(); 
+            grades.ToList().ForEach(g => 
             {
-                s.Average = grades.Where(g => g.StudentNumber == s.StudentNumber).Average(g => g.Score);
-                return s;
-            }).ToList();
+                if(!gradesDic.ContainsKey(g.StudentNumber))
+                {
+                    gradesDic[g.StudentNumber] = new List<decimal>();
+                }
+                gradesDic[g.StudentNumber].Add(g.Score);
+            });
+
+            _students = new List<Student>();
+            students.ToList().ForEach(s => {
+                s.Average = gradesDic[s.StudentNumber].Average();
+                _students.Add(s);
+            });
         }
         public IList<Student> GetBestAverages(int count)
         {
