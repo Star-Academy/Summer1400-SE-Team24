@@ -1,49 +1,38 @@
 package tests;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
+
+import exceptions.NotDirectoryException;
+
 import org.junit.Assert;
 import org.junit.Before;
 
-import exceptions.NotDirectoryException;
 import file_handler.DirectoryReader;
-import file_handler.Doc;
-import file_handler.FileReader;
-import file_handler.IDirectoryReader;
 
-public class FileHandlerTest {
+public class DirectoryReaderTest {
 
-    private List<Doc> testDocs;
-    private File[] testFiles;
+    private final int FILES_COUNT = 3;
+    private final String[] TEST_FILE_NAMES = new String[] {"57110", "59483", "59519"};
+    private final String TEST_DOCS_PATH = "C:\\Repos\\Summer1400-SE-Team24\\Inverted-Index\\src\\tests\\docs";
+    private File[] files;
 
     @Before
-    public void getTestDocs() throws NotDirectoryException, FileNotFoundException {
-        IDirectoryReader reader = new DirectoryReader();
-        testFiles = reader.getFiles("C:\\Repos\\Summer1400-SE-Team24\\Inverted-Index\\src\\tests\\docs");
-        Assert.assertEquals(8, testFiles.length);
-
-        FileReader fileReader = new FileReader();
-        this.testDocs = fileReader.getFilesDocs(testFiles);
+    public void readingFiles() throws NotDirectoryException {
+        var directoryReader = new DirectoryReader();
+        files = directoryReader.getFiles(TEST_DOCS_PATH);
     }
 
     @Test
-    public void docEqualsTest() {
-        String sameName = "sameName";
-        var content = new ArrayList<String>();
-        Doc doc1 = new Doc(sameName, content);
-        Doc doc2 = new Doc(sameName, content);
+    public void readedFilesCountTest() {
 
-        Assert.assertEquals(doc1, doc2);
+        Assert.assertEquals(FILES_COUNT, files.length);
     }
 
     @Test
-    public void getFilesDocsTest() {
-
-        Assert.assertEquals(testFiles.length, testDocs.size());
-        Assert.assertEquals(testDocs.get(0).getName(), testFiles[0].getName());
-        Assert.assertEquals(8, testDocs.get(0).getWords().size());
+    public void readedFilesNamesTest() {
+        for (int i = 0; i < TEST_FILE_NAMES.length; i++) {
+            Assert.assertEquals(TEST_FILE_NAMES[i], files[i].getName());
+        }
     }
 }
