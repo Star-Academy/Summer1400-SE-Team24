@@ -25,7 +25,7 @@ public class InvertedIndexTest {
 
     private final String KEY = "key";
     private InvertedIndex index;
-    private Map<String, Set<Doc>> fakeMap;
+    private Map<String, Set<Doc>> mockMap;
     private Set<Doc> docSet;
 
     @Mock
@@ -43,14 +43,14 @@ public class InvertedIndexTest {
         docSet.add(new Doc("2", new ArrayList<>()));
         docSet.add(new Doc("3", new ArrayList<>()));
 
-        fakeMap = new HashMap<>();
-        fakeMap.put(KEY, docSet);
+        mockMap = new HashMap<>();
+        mockMap.put(KEY, docSet);
     }
 
     @Test
     public void invertedIndexGetTest() {
 
-        when(mapper.mergeMaps(any(), any())).thenReturn(fakeMap);
+        when(mapper.mergeMaps(any(), any())).thenReturn(mockMap);
 
         var result = index.get(KEY);
         Assert.assertEquals(docSet, result);
