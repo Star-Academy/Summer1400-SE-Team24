@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class FileReader {
 
+    private final String REPLACING_REGEX = "[^a-zA-Z0-9]";
     public List<Doc> getFilesDocs(File[] files) throws FileNotFoundException {
         var docs = new ArrayList<Doc>();
         for (File file : files) {
@@ -23,7 +24,7 @@ public class FileReader {
     
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine().toLowerCase();
-                String[] lineWords = line.replaceAll("[^a-zA-Z0-9]"," ").split("\\s+");
+                String[] lineWords = line.replaceAll(REPLACING_REGEX," ").split("\\s+");
                 words.addAll(Arrays.asList(lineWords));
             }
             return words;
