@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using Students.Models;
 using System.Linq;
 
-namespace Students.Sevices
+namespace Students.Services
 {
-    public class Students
+    public class StudentsService
     {
-        private IList<Student> _students;
+        private readonly IList<Student> _students;
 
-        public Students(IList<Student> students, IList<Grade> grades)
+        public StudentsService(IList<Student> students, IList<Grade> grades)
         {
             _students = students.Select(s => 
             {

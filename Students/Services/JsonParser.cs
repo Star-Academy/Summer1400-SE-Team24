@@ -2,7 +2,7 @@ using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Students
+namespace Students.Services
 {
     public class JsonParser
     {
