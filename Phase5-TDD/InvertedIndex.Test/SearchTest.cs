@@ -25,7 +25,7 @@ namespace InvertedIndex.Test
 
             string query = "i have -friend";
             var parser = new QueryParser();
-            var docs = engine.search(parser.parseQuery(query));
+            var docs = engine.search(parser.ParseQuery(query));
             var expectedDocs = new HashSet<Doc>() {
                     new Doc("59496", new List<string>()),
                     new Doc("59495", new List<string>()),

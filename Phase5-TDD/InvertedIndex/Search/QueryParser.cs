@@ -8,7 +8,7 @@ namespace InvertedIndex.Search
     {
         private readonly string INCLUDE = "+";
         private readonly string EXCLUDE = "-";
-        public IList<Keyword> parseQuery(string query)
+        public IList<Keyword> ParseQuery(string query)
         {
             var words = query.ToLower().Split(" ");
             var keywords = new List<Keyword>();
