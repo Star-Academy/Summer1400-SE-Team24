@@ -8,7 +8,7 @@ namespace InvertedIndex.Test
 {
     public class FileReaderTest : IDisposable
     {
-        private const string BASE_PATH = "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs/";
+        private const string BASE_PATH = "InvertedIndex.Test/docs";
         private const string TEST_FILE_NAME = "57110";
         private const string TEST_FILE_PATH1 = BASE_PATH + TEST_FILE_NAME;
         private readonly IList<string> TEST_FILE_WORDS = new List<string>() {"i","have","a","42","yr","old","male","friend"};

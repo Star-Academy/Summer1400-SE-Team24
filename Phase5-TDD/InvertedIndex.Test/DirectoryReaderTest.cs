@@ -10,7 +10,7 @@ namespace InvertedIndex.Test
     {
         private const int FILES_COUNT = 3;
         private readonly string[] TEST_FILE_NAMES = new string[] {"57110","59483","59519"};
-        private const string TEST_DOCS_PATH = "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs";
+        private const string TEST_DOCS_PATH = "InvertedIndex.Test/docs";
         private FileInfo[] _files;
 
         public DirectoryReaderTest()
