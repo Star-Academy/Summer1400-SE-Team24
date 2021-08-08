@@ -8,6 +8,7 @@ namespace InvertedIndex.Search
     {
         private IDictionary<string, HashSet<Doc>> map;
 
+        public InvertedIndex() { }
         public InvertedIndex(IList<Doc> docs, Mapper mapper)
         {
             map = new Dictionary<string, HashSet<Doc>>();
@@ -16,7 +17,7 @@ namespace InvertedIndex.Search
                 map = mapper.MergeMaps(map, mapper.GetDocMap(doc));
         }
 
-        public HashSet<Doc> Get(string word)
+        public virtual HashSet<Doc> Get(string word)
         {
             return map[word];
         }

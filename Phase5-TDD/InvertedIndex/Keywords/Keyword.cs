@@ -5,7 +5,7 @@ namespace InvertedIndex.Keywords
 {
     public interface Keyword
     {
-        public string GetWord();
-        public HashSet<Doc> Operate(HashSet<Doc> docs, HashSet<Doc> newDocs);
+        string GetWord();
+        HashSet<Doc> Operate(HashSet<Doc> docs, HashSet<Doc> newDocs);
     }
 }

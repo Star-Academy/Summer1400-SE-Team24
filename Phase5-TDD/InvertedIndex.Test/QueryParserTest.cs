@@ -20,19 +20,19 @@ namespace InvertedIndex.Test
         [Fact]
         public void ParseQueryTest1()
         {
-            Assert.Equal(_keywords[0].GetWord(), "ordinary");
+            Assert.Equal("ordinary", _keywords[0].GetWord());
         }
 
         [Fact]
         public void ParseQueryTest2()
         {
-            Assert.Equal(_keywords[1].GetWord(), "union");
+            Assert.Equal("union", _keywords[1].GetWord());
         }
 
         [Fact]
         public void ParseQueryTest3()
         {
-            Assert.Equal(_keywords[2].GetWord(), "exclude");
+            Assert.Equal("exclude", _keywords[2].GetWord());
         }
 
         public void Dispose()
