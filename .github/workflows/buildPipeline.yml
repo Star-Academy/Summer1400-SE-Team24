@@ -35,11 +35,11 @@ jobs:
       working-directory: ./Phase5-TDD
 
   test:
-    # needs: [setup,build]
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Log info
-      run: ls
+      run: ls && ls InvertedIndex.Test/
       working-directory: ./Phase5-TDD
 
     - name: Test
