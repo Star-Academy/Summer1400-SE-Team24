@@ -19,7 +19,7 @@ namespace InvertedIndex.Search
             return map;
         }
 
-        public IDictionary<string, HashSet<Doc>> mergeMaps(IDictionary<string, HashSet<Doc>> map, IDictionary<string, HashSet<Doc>> doc)
+        public virtual IDictionary<string, HashSet<Doc>> mergeMaps(IDictionary<string, HashSet<Doc>> map, IDictionary<string, HashSet<Doc>> doc)
         {
             IDictionary<string, HashSet<Doc>> newMap;
 

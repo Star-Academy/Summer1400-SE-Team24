@@ -16,7 +16,7 @@ namespace InvertedIndex.Search
                 map = mapper.mergeMaps(map, mapper.getDocMap(doc));
         }
 
-        public HashSet<Doc> get(string word)
+        public HashSet<Doc> Get(string word)
         {
             return map[word];
         }

@@ -19,7 +19,7 @@ namespace InvertedIndex.Search
 
             foreach(var keyword in keywords) {
                 
-                var newDocs = index.get(keyword.GetWord());
+                var newDocs = index.Get(keyword.GetWord());
                 docs = keyword.Operate(docs, newDocs);
             }
             return docs;

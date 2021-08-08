@@ -202,3 +202,5 @@
 /home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/obj/Debug/net5.0/ref/InvertedIndex.Test.dll
 /home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/obj/Debug/net5.0/InvertedIndex.Test.pdb
 /home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/obj/Debug/net5.0/InvertedIndex.Test.genruntimeconfig.cache
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/bin/Debug/net5.0/Castle.Core.dll
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/bin/Debug/net5.0/Moq.dll
