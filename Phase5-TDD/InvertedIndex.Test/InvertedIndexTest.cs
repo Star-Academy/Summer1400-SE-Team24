@@ -13,7 +13,7 @@ namespace InvertedIndex.Test
         public InvertedIndexTest()
         {
             IDirectoryReader reader = new DirectoryReader();
-            FileInfo[] testFiles = reader.getFiles("/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs");
+            FileInfo[] testFiles = reader.GetFiles("/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs");
             FileReader fileReader = new FileReader();
             this.testDocs = fileReader.getFilesDocs(testFiles);
         }

@@ -10,3 +10,15 @@
 /media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.dll
 /media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/ref/InvertedIndex.dll
 /media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.pdb
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/InvertedIndex.deps.json
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/InvertedIndex.dll
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/ref/InvertedIndex.dll
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/InvertedIndex.pdb
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.csproj.AssemblyReference.cache
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.GeneratedMSBuildEditorConfig.editorconfig
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.AssemblyInfoInputs.cache
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.AssemblyInfo.cs
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.csproj.CoreCompileInputs.cache
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.dll
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/ref/InvertedIndex.dll
+/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.pdb

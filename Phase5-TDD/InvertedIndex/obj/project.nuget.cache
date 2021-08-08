@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wLI8bQIzB2X4VCq51F/NzKxUdB4yaRAbQLlluGX/qKgGSDXaATBcMcutLtOtiCGC9BFSb1lFVPyoEWG9s5ed1w==",
+  "dgSpecHash": "wrmZerYznmPD6GnzlTeC8I/Zy5OS5CJQv5CHnzq8qIdKtjbgNDmnGocS/Jn8k2iNaWmGDRUEQsYOTJUhDUytUg==",
   "success": true,
-  "projectFilePath": "/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj",
+  "projectFilePath": "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

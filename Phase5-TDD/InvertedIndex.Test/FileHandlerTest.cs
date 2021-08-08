@@ -13,7 +13,7 @@ namespace InvertedIndex.Test
 
         public FileHandlerTest(){
             IDirectoryReader reader = new DirectoryReader();
-            testFiles = reader.getFiles("/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs");
+            testFiles = reader.GetFiles("/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs");
             FileReader fileReader = new FileReader();
             this.testDocs = fileReader.getFilesDocs(testFiles);
         }
@@ -21,7 +21,7 @@ namespace InvertedIndex.Test
         [Fact]
         public void fileReadingTest() {
             IDirectoryReader reader = new DirectoryReader();
-            var files = reader.getFiles("/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs");
+            var files = reader.GetFiles("/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex.Test/docs");
             Assert.Equal(8, files.Length);
         }
 
