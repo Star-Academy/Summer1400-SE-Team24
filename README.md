@@ -1,7 +1,6 @@
 # Summer1400-SE-Team24
 
 [![codecov](https://codecov.io/gh/Star-Academy/Summer1400-SE-Team24/branch/main/graph/badge.svg?token=08ZU8XFOTL)](https://codecov.io/gh/Star-Academy/Summer1400-SE-Team24)
-
 ![Pipeline](https://github.com/Star-Academy/Summer1400-SE-Team24/actions/workflows/buildPipeline.yml/badge.svg)
 
 ## Folder Structure
