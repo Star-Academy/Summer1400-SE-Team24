@@ -1,7 +1,13 @@
 package tests;
-import search.InvertedIndex;
-import search.QueryParser;
-import search.SearchEngine;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.HashMap;
+
+import static org.mockito.Mockito.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -9,11 +15,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.junit.Assert;
 import org.junit.Before;
 
-import static org.mockito.Mockito.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import search.InvertedIndex;
+import search.QueryParser;
+import search.SearchEngine;
 import file_handler.Doc;
 import keywords.Exclude;
 import keywords.Ordinary;
@@ -25,10 +29,6 @@ public class SearchEngineTest {
     private final Doc DOC1;
     private final Doc DOC2;
     private final Doc DOC3;
-
-    private final String ORDINARY_WORD = "i";
-    private final String UNION_WORD = "first";
-    private final String EXCLUDE_WORD = "friend";
 
     @Mock
     QueryParser parser;
@@ -47,71 +47,96 @@ public class SearchEngineTest {
         DOC3 = new Doc("59519", new ArrayList<>());
     }
 
-    private void mockKeywords() {
-        when(ordinary.getWord()).thenReturn(ORDINARY_WORD);
-        when(union.getWord()).thenReturn(UNION_WORD);
-        when(exclude.getWord()).thenReturn(EXCLUDE_WORD);
-    
-        when(ordinary.operate(any(), any())).thenReturn(new HashSet<Doc>() {
-            {
-                add(DOC1);
-                add(DOC2);
-            }
-        });
-    
-        when(union.operate(any(), any())).thenReturn(new HashSet<Doc>() {
-            {
-                add(DOC1);
-                add(DOC2);
-                add(DOC3);
-            }
-        });
-    
-        when(exclude.operate(any(), any())).thenReturn(new HashSet<Doc>() {
-            {
-                add(DOC2);
-                add(DOC3);
-            }
-        });
-    }
+    private Set<Doc> buildHashSet(boolean doc1Exists, boolean doc2Exists, boolean doc3Exists) {
+        var set = new HashSet<Doc>();
+        if(doc1Exists) set.add(DOC1);
+        if(doc2Exists) set.add(DOC2);
+        if(doc3Exists) set.add(DOC3);
 
-    private void mockIndex() {
-        when(index.get(ORDINARY_WORD)).thenReturn(new HashSet<Doc>() {
-            {
-                add(DOC1);
-                add(DOC2);
-            }
-        });
-        when(index.get(UNION_WORD)).thenReturn(new HashSet<Doc>() {
-            {add(DOC3);}
-        });
-        when(index.get(EXCLUDE_WORD)).thenReturn(new HashSet<Doc>() {
-            {add(DOC1);}
-        });
+        return set;
     }
     
-    @Before
-    public void mockResources() {
-        var mockKeywords = Arrays.asList(ordinary, union, exclude);
-        when(parser.parseQuery(anyString())).thenReturn(mockKeywords);
-        
-        mockKeywords();
+    private Set<Doc> mockDocs(Map<Keyword,boolean[]> keywordDocs) {
 
-        mockIndex();
-    }
-    @Test
-    public void searchEngineTest() {
-        var engine = new SearchEngine(index);
+        var keywordsMock = keywordDocs.keySet();
+        when(parser.parseQuery(anyString())).thenReturn(keywordsMock);
+
+        for(var pair : keywordDocs) {
+            var includeArray = pair.getValue();
+            when(pair.getKey().operate(any(), any())).thenReturn(
+                buildHashSet(includeArray[0],includeArray[1],includeArray[2])
+            );
+        }
 
         var docs = engine.search(parser.parseQuery(""));
+    }
 
-        var expectedDocs = new HashSet<Doc>() {
+    @Before
+    public void mockResources() {
+
+        var engine = new SearchEngine(index);
+
+        doNothing().when(index.get(any()));
+        
+        doNothing().when(ordinary.getWord());
+        doNothing().when(union.getWord());
+        doNothing().when(exclude.getWord());
+    }
+
+    @Test
+    public void unionWithExcludeTest() {
+        var keywordDocs = new HashMap<Keyword,boolean[]>() {
             {
-                add(new Doc("59483", new ArrayList<>()));
-                add(new Doc("59519", new ArrayList<>()));
+                put(ordinary, {false,true,false});
+                put(union, {true,true,false});
+                put(exclude, {true,false,true});
             }
         };
+        
+        var docs = mockDocs(keywordDocs);
+        var expectedDocs = buildHashSet(false,true,false);
+        Assert.assertEquals(expectedDocs, docs);
+    }
 
+    @Test
+    public void includeAllTest() {
+        var keywordDocs = new HashMap<Keyword,boolean[]>() {
+            {
+                put(ordinary, {false,false,false});
+                put(union, {true,true,true});
+            }
+        };
+        
+        var docs = mockDocs(keywordDocs);
+        var expectedDocs = buildHashSet(true,true,true);
+        Assert.assertEquals(expectedDocs, docs);
+    }
+
+    @Test
+    public void excludeAllTest() {
+        
+        var keywordDocs = new HashMap<Keyword,boolean[]>() {
+            {
+                put(ordinary, {true,false,true});
+                put(exclude, {true,true,true});
+            }
+        };
+        
+        var docs = mockDocs(keywordDocs);
+        var expectedDocs = buildHashSet(false,false,false);
+        Assert.assertEquals(expectedDocs, docs);
+    }
+
+    @Test
+    public void simpleSearchTets() {
+        var keywordDocs = new HashMap<Keyword,boolean[]>() {
+            {
+                put(ordinary, {true,true,false});
+            }
+        };
+        
+        var docs = mockDocs(keywordDocs);
+        var expectedDocs = buildHashSet(true,true,false);
         Assert.assertEquals(expectedDocs, docs);
     }
 }
