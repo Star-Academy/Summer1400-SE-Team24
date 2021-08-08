@@ -1,4 +1,4 @@
-name: build
+name: build & Test
 on:
   push:
     branches: [ main ]
@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
-    
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
     - name: Install dependencies
       run: dotnet restore
       working-directory: ./Phase5-TDD
@@ -24,6 +29,10 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       working-directory: ./Phase5-TDD
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
