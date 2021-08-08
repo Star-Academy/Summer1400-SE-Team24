@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using InvertedIndex.FileHandler;
+
+namespace InvertedIndex.Keywords
+{
+    public class Exclude : Keyword
+    {
+        private string word;
+
+        public Exclude(string word)
+        {
+            this.word = word;
+        }
+
+        public string GetWord()
+        {
+            return word;
+        }
+        public HashSet<Doc> Operate(HashSet<Doc> docs, HashSet<Doc> newDocs)
+        {
+            if(docs == null) {
+                return new HashSet<Doc>();
+            }
+            if(newDocs != null)
+                docs.ExceptWith(newDocs);
+            return docs;
+        }
+    }
+}
