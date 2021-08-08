@@ -29,6 +29,10 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       working-directory: ./Phase5-TDD
+
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
+      working-directory: ./Phase5-TDD
   test:
     needs: [setup,build]
     runs-on: ubuntu-latest
