@@ -12,7 +12,7 @@ namespace InvertedIndex.FileHandler
             if(path.Exists) {
                 return path.GetFiles();
             }
-            throw new NotADirectoryException(dirPath);
+            throw new NotDirectoryException(dirPath);
         }
     }
 }
