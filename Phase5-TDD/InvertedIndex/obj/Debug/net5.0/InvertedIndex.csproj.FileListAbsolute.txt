@@ -1,0 +1,12 @@
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.csproj.AssemblyReference.cache
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.GeneratedMSBuildEditorConfig.editorconfig
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.AssemblyInfoInputs.cache
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.AssemblyInfo.cs
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.csproj.CoreCompileInputs.cache
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/InvertedIndex.deps.json
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/InvertedIndex.dll
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/ref/InvertedIndex.dll
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/bin/Debug/net5.0/InvertedIndex.pdb
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.dll
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/ref/InvertedIndex.dll
+/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/Debug/net5.0/InvertedIndex.pdb
