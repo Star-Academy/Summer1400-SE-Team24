@@ -36,11 +36,12 @@ jobs:
 
   test:
     # needs: [setup,build]
+    runs-on: ubuntu-latest
     steps:
     - name: Log info
       run: ls
       working-directory: ./Phase5-TDD
-      
+
     - name: Test
       run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
       working-directory: ./Phase5-TDD
