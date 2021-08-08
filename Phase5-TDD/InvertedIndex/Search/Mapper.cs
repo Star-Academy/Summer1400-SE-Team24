@@ -12,7 +12,7 @@ namespace InvertedIndex.Search
             var docList = new HashSet<Doc>();
             docList.Add(doc);
 
-            foreach (var word in doc.getWords()) {
+            foreach (var word in doc.GetWords()) {
                 if(!map.ContainsKey(word))
                     map.Add(word, docList);
             }
