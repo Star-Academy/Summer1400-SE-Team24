@@ -38,6 +38,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+    
     - name: Log info
       run: ls && ls InvertedIndex.Test/
       working-directory: ./Phase5-TDD
