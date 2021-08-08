@@ -13,7 +13,7 @@ namespace InvertedIndex.Search
             map = new Dictionary<string, HashSet<Doc>>();
 
             foreach (var doc in docs) 
-                map = mapper.mergeMaps(map, mapper.getDocMap(doc));
+                map = mapper.MergeMaps(map, mapper.GetDocMap(doc));
         }
 
         public HashSet<Doc> Get(string word)

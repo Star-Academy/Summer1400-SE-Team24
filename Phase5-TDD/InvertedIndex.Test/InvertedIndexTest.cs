@@ -27,7 +27,7 @@ namespace InvertedIndex.Test
             _mockMap.Add(mockKey, _docSet);
 
             _mockMapper = new Mock<Mapper>();
-            _mockMapper.Setup(m => m.mergeMaps(
+            _mockMapper.Setup(m => m.MergeMaps(
                 It.IsAny<IDictionary<string,HashSet<Doc>>>(), It.IsAny<IDictionary<string,HashSet<Doc>>>()
                 )).Returns(_mockMap);
 

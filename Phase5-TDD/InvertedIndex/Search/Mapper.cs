@@ -6,7 +6,7 @@ namespace InvertedIndex.Search
 {
     public class Mapper
     {
-        public IDictionary<string, HashSet<Doc>> getDocMap(Doc doc)
+        public IDictionary<string, HashSet<Doc>> GetDocMap(Doc doc)
         {
             var map = new Dictionary<String, HashSet<Doc>>();
             var docList = new HashSet<Doc>();
@@ -19,34 +19,34 @@ namespace InvertedIndex.Search
             return map;
         }
 
-        public virtual IDictionary<string, HashSet<Doc>> mergeMaps(IDictionary<string, HashSet<Doc>> map, IDictionary<string, HashSet<Doc>> doc)
+        public virtual IDictionary<string, HashSet<Doc>> MergeMaps(IDictionary<string, HashSet<Doc>> map, IDictionary<string, HashSet<Doc>> doc)
         {
             IDictionary<string, HashSet<Doc>> newMap;
 
-            newMap = appendSameKeys(map, doc);
-            newMap = addDiffrentKeys(newMap, doc);
+            newMap = AppendSameKeys(map, doc);
+            newMap = AddDiffrentKeys(newMap, doc);
 
             return newMap;
         }
 
-        public IDictionary<string, HashSet<Doc>> appendSameKeys(IDictionary<string, HashSet<Doc>> baseMap, IDictionary<string, HashSet<Doc>> additionalMap)
+        public IDictionary<string, HashSet<Doc>> AppendSameKeys(IDictionary<string, HashSet<Doc>> baseMap, IDictionary<string, HashSet<Doc>> additionalMap)
         {
             foreach (var pair in baseMap) {
-                baseMap = addPairValues(baseMap, additionalMap, pair);
+                baseMap = AddPairValues(baseMap, additionalMap, pair);
             }
             return baseMap;
         }
 
-        public IDictionary<string, HashSet<Doc>> addDiffrentKeys(IDictionary<string, HashSet<Doc>> baseMap, IDictionary<string, HashSet<Doc>> additionalMap)
+        public IDictionary<string, HashSet<Doc>> AddDiffrentKeys(IDictionary<string, HashSet<Doc>> baseMap, IDictionary<string, HashSet<Doc>> additionalMap)
         {
             foreach (var pair in additionalMap) {
-                baseMap = addPair(baseMap, pair);
+                baseMap = AddPair(baseMap, pair);
             }
 
             return baseMap;
         }
 
-        public IDictionary<string, HashSet<Doc>> addPair(IDictionary<string, HashSet<Doc>> baseMap, KeyValuePair<string, HashSet<Doc>> pair)
+        public IDictionary<string, HashSet<Doc>> AddPair(IDictionary<string, HashSet<Doc>> baseMap, KeyValuePair<string, HashSet<Doc>> pair)
         {
             var key = pair.Key;
             if(!baseMap.ContainsKey(key)) {
@@ -58,7 +58,7 @@ namespace InvertedIndex.Search
             return baseMap;
         }
         
-        public IDictionary<string, HashSet<Doc>> addPairValues(IDictionary<string, HashSet<Doc>> baseMap, IDictionary<string, HashSet<Doc>> additionalMap, KeyValuePair<string, HashSet<Doc>> pair)
+        public IDictionary<string, HashSet<Doc>> AddPairValues(IDictionary<string, HashSet<Doc>> baseMap, IDictionary<string, HashSet<Doc>> additionalMap, KeyValuePair<string, HashSet<Doc>> pair)
         {
             var key = pair.Key;
             if(additionalMap.ContainsKey(key)) {
