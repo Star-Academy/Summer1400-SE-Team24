@@ -30,14 +30,12 @@ jobs:
       run: dotnet build --configuration Release --no-restore
       working-directory: ./Phase5-TDD
 
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
+    - name: Log info
+      run: ls
       working-directory: ./Phase5-TDD
+      
   test:
     needs: [setup,build]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
