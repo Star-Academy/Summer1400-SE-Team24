@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,6 @@ import search.Mapper;
 @RunWith(MockitoJUnitRunner.class)
 public class InvertedIndexTest {
 
-    private final String KEY = "key";
     private InvertedIndex index;
     private Map<String, Set<Doc>> mockMap;
     private Set<Doc> docSet;
@@ -29,12 +29,17 @@ public class InvertedIndexTest {
     @Mock
     Mapper mapper;
 
-    private void initDocSet() {
+    private void initMockings(String mockKey, List<String> docNames, ) {
+
         docSet = new HashSet<>();
     
-        docSet.add(new Doc("1", new ArrayList<>()));
-        docSet.add(new Doc("2", new ArrayList<>()));
-        docSet.add(new Doc("3", new ArrayList<>()));
+        for(var name : docNames) {
+            docSet.add(new Doc(name, new ArrayList<>()));
+        }
+        
+        mockMap = new HashMap<>();
+        mockMap.put(mockKey, docSet);
+        when(mapper.mergeMaps(any(), any())).thenReturn(mockMap);
     }
     @Before
     public void init() {
@@ -42,19 +47,25 @@ public class InvertedIndexTest {
         index = new InvertedIndex(new ArrayList<>() {
             {add(new Doc("1", new ArrayList<>()));}
         }, mapper);
-
-        initDocSet();
-        
-        mockMap = new HashMap<>();
-        mockMap.put(KEY, docSet);
     }
 
     @Test
-    public void invertedIndexGetTest() {
+    public void invertedIndexGetTest1() {
 
-        when(mapper.mergeMaps(any(), any())).thenReturn(mockMap);
+        final String KEY = "key";
+        initMockings(KEY, Arrays.asList("1","2","3"));
 
         var result = index.get(KEY);
         Assert.assertEquals(docSet, result);
+    }
+
+    @Test
+    public void invertedIndexGetTest2() {
+
+        final String KEY = "anotherkey";
+        initMockings(KEY, new ArrayList<>());
+
+        var result = index.get(KEY);
+        Assert.assertEquals(null, result);
     }
 }
