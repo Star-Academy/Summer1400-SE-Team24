@@ -26,9 +26,7 @@ namespace Students.Services
                 _students.Add(s);
             });
         }
-        public IList<Student> GetBestAverages(int count)
-        {
-            return _students.OrderByDescending(s => s.Average).Take(count).ToList();
-        }
+        public IList<Student> GetBestAverages(int count) =>
+            _students.OrderByDescending(s => s.Average).Take(count).ToList();
     }
 }
