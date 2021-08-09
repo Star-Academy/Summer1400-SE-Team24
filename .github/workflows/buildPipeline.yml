@@ -48,9 +48,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Download math result for job 1
-        uses: actions/download-artifact@v2
-        with:
-          name: build
+      uses: actions/download-artifact@v2
+      with:
+        name: build
     
     - name: Log info
       run: ls && ls InvertedIndex.Test/
