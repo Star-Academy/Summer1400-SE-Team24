@@ -8,7 +8,7 @@ namespace InvertedIndex.Test
 {
     public class FileReaderTest : IDisposable
     {
-        private readonly string TEST_FILE_PATH1 = Path.GetFullPath("./InvertedIndex.Test/docs/57110");
+        private readonly string TEST_FILE_PATH1 = Path.GetFullPath("../../../docs/57110");
         private const string TEST_FILE_NAME = "57110";
         private readonly IList<string> TEST_FILE_WORDS = new List<string>() {"i","have","a","42","yr","old","male","friend"};
         private FileReader _fileReader;
