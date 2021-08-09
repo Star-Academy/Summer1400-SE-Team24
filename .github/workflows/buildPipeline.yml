@@ -17,7 +17,7 @@ jobs:
       with:
         dotnet-version: '5.0.x'
     
-  build:
+  test:
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -31,30 +31,9 @@ jobs:
       run: dotnet build --configuration Release --no-restore
       working-directory: ./Phase5-TDD
 
-    - name: Upload result for job build
-      uses: actions/upload-artifact@v2
-      with:
-        name: build
-        path: .
-
-    - name: Log info
-      run: ls
-      working-directory: ./Phase5-TDD
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Download math result for job 1
-      uses: actions/download-artifact@v2
-      with:
-        name: build
-    
-    - name: Log info
-      run: ls && ls InvertedIndex.Test/
-      working-directory: ./Phase5-TDD
+    # - name: Log info
+    #   run: ls
+    #   working-directory: ./Phase5-TDD
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal --collect:"XPlat Code Coverage"
