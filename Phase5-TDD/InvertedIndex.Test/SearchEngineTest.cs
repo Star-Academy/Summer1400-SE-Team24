@@ -64,7 +64,7 @@ namespace InvertedIndex.Test
                     .Returns(buildHashSet(includeArray[0], includeArray[1], includeArray[2]));
             }
 
-            return _engine.search(_parserMock.Object.ParseQuery(""));
+            return _engine.Search(_parserMock.Object.ParseQuery(""));
         }
 
         [Fact]

@@ -13,7 +13,7 @@ namespace InvertedIndex.Search
         {
             this.index = index;
         }
-        public HashSet<Doc> search(IList<Keyword> keywords)
+        public HashSet<Doc> Search(IList<Keyword> keywords)
         {
             HashSet<Doc> docs = null;
 
