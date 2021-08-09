@@ -6,9 +6,16 @@ namespace InvertedIndex
 {
     class Program
     {
+        const string docsPath = "";
         static void Main(string[] args)
         {
             IDocRepository docHandler = new DocRepository();
+
+            if(docHandler.IsEmpty())
+            {
+                var fileReader = new FileReader(docHandler);
+                fileReader.AddFilesToDataBase(docsPath);
+            }
 
             var index = new Models.InvertedIndex(docHandler.GetAllDocs(), new Mapper());
             var engine = new SearchEngine(index);

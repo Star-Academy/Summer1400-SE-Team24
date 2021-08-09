@@ -27,6 +27,11 @@ namespace InvertedIndex.Data.Services
             });
         }
 
+        public bool IsEmpty()
+        {
+            return !_dbContext.Docs.Any();
+        }
+
         public void Save()
         {
             _dbContext.SaveChanges();

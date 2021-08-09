@@ -7,5 +7,7 @@ namespace InvertedIndex.Data.Services
     {
         IList<Doc> GetAllDocs();
         void AddDoc(string docName, string docText);
+        bool IsEmpty();
+        void Save();
     }
 }
