@@ -7,8 +7,10 @@ namespace InvertedIndex.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
+            base.OnConfiguring(builder);
+            
             builder.UseSqlServer(
-                "server=localhost;database=InvertedIndex_Db;User Id=SA;Password=M_e1415926536;"
+                "Server=.;Database=InvertedIndex_Db;Integrated_security=true;"
             );
         }
 
