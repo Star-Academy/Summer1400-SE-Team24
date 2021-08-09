@@ -32,10 +32,10 @@ jobs:
       working-directory: ./Phase5-TDD
 
     - name: Upload result for job build
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: .
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: .
 
     - name: Log info
       run: ls
