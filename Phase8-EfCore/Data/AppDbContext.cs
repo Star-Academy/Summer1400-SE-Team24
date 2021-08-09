@@ -5,12 +5,10 @@ namespace InvertedIndex.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext() {}
-
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseSqlServer(
-                "server=.;database=InvertedIndex_Db;User Id=SA;Password=M_e1415926536;"
+                "server=localhost;database=InvertedIndex_Db;User Id=SA;Password=M_e1415926536;"
             );
         }
 

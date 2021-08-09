@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.IO;
+using System;
 using InvertedIndex.Logic;
 using InvertedIndex.Data.Services;
 
@@ -6,7 +7,7 @@ namespace InvertedIndex
 {
     class Program
     {
-        const string docsPath = "";
+        static readonly string docsPath = Path.GetFullPath("./docs");
         static void Main(string[] args)
         {
             IDocRepository docHandler = new DocRepository();

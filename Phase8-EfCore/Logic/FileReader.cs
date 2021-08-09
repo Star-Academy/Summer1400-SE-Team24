@@ -24,6 +24,7 @@ namespace InvertedIndex.Logic
             {
                 _docManager.AddDoc(file.Name, ReadAllText(file));
             }
+            _docManager.Save();
         }
 
         public string ReadAllText(FileInfo file)

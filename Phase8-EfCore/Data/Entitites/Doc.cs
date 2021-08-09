@@ -11,21 +11,18 @@ namespace InvertedIndex.Data.Entities
         [Key]
         [MaxLength(5)]
         public string ID { get; set; }
-        public string Text 
-        {
-            get { return Text; }
-            set
-            {
-                Text = value;
-                _words = Regex.Replace(value.ToLower(), "[^a-zA-Z0-9]", " ")
-                    .Split(' ').Select(word => word.Trim())
-                    .Where(word => !string.IsNullOrEmpty(word)).ToList<string>();
-            }
-        }
+        public string Text { get; set; }
+        
         [NotMapped]
         private IList<string> _words;
         public IList<string> GetWords()
         {
+            if(_words == null)
+            {
+                _words = Regex.Replace(Text.ToLower(), "[^a-zA-Z0-9]", " ")
+                    .Split(' ').Select(word => word.Trim())
+                    .Where(word => !string.IsNullOrEmpty(word)).ToList<string>();
+            }
             return _words;
         }
 
