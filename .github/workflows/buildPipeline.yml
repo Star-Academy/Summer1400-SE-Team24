@@ -16,6 +16,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
+    
   build:
     needs: setup
     runs-on: ubuntu-latest
@@ -29,6 +30,12 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       working-directory: ./Phase5-TDD
+
+    - name: Upload result for job build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: .
 
     - name: Log info
       run: ls
