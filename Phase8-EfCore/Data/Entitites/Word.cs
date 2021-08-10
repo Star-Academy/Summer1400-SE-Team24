@@ -14,6 +14,6 @@ namespace InvertedIndex.Data.Entities
         public int WordID { get; set; }
         public string Text { get; set; }
         
-        public IList<Doc> Docs { get; set; }
+        public IList<DocWordAssign> DocWordAssigns { get; set; }
     }
 }

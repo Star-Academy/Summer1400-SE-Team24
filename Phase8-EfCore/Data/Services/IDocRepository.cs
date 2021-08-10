@@ -7,7 +7,9 @@ namespace InvertedIndex.Data.Services
     {
         IList<Doc> GetAllDocs();
         HashSet<Doc> GetDocs(string word);
-        void AddDocWithWords(string docName, IList<string> words);
+        void AddDoc(string docID);
+        void AddWord(string word);
+        void AssignDocToWords(string docName, IList<string> words);
         bool IsEmpty();
         void Save();
     }

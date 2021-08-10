@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
@@ -17,43 +18,45 @@ namespace InvertedIndex.Data.Services
         public IList<Doc> GetAllDocs() => _dbContext.Docs.ToList();
 
         public HashSet<Doc> GetDocs(string word) => 
-            _dbContext.Docs
-            .Include(d => d.DocWordAssign).ThenInclude(a => a.Word)
-            .Where(d => d.DocWordAssign.Word.Text == word).ToHashSet();
+            _dbContext.DocWordsAssigns.Where(a => a.Word.Text == word)
+            .Include(a => a.Doc).Select(a => a.Doc).ToHashSet();
 
-        public void AddDocWithWords(string docID, IList<string> words)
+        public void AssignDocToWords(string docID, IList<string> words)
         {
             this.AddDoc(docID);
 
-            int wordId;
             foreach (var word in words)
             {
-                wordId = this.AddWord(word);
+                this.AddWord(word);
 
                 _dbContext.DocWordsAssigns.Add(new DocWordAssign()
                 {
                     DocID = docID,
-                    WordID = wordId
+                    WordID = _dbContext.Words.SingleOrDefault(w => w.Text == word).WordID
                 });
             }
         }
 
         public void AddDoc(string docID)
         {
-            _dbContext.Docs.Add(new Doc()
+            if(!_dbContext.Docs.Any(d => d.DocID == docID))
             {
-                DocID = docID
-            });
+                _dbContext.Docs.Add(new Doc()
+                {
+                    DocID = docID
+                });
+            }
         }
 
-        public int AddWord(string word)
+        public void AddWord(string word)
         {
-            var addedWord = _dbContext.Words.Add(new Word()
+            if(!_dbContext.Words.Any(w => w.Text == word))
             {
-                Text = word
-            });
-
-            return addedWord.Entity.WordID;
+                _dbContext.Words.Add(new Word()
+                {
+                    Text = word
+                });
+            }
         }
         public bool IsEmpty() => !_dbContext.Docs.Any();
 

@@ -22,9 +22,18 @@ namespace InvertedIndex.Logic
 
             foreach (var file in directory.GetFiles())
             {
-                _docManager.AddDocWithWords(file.Name, Split(ReadAllText(file)));
+                System.Console.WriteLine(file.Name);
+                _docManager.AddDoc(file.Name);
+                _docManager.Save();
+                var words = Split(ReadAllText(file));
+                foreach (var word in words)
+                {
+                    _docManager.AddWord(word);
+                    _docManager.Save();
+                }
+                _docManager.AssignDocToWords(file.Name, words);
+                _docManager.Save();
             }
-            _docManager.Save();
         }
 
         public string ReadAllText(FileInfo file)

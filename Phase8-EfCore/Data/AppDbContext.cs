@@ -1,3 +1,4 @@
+using System;
 using InvertedIndex.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,8 +10,11 @@ namespace InvertedIndex.Data
         {
             base.OnConfiguring(builder);
             
+            string dbID = Environment.GetEnvironmentVariable("DB_ID");
+            string dbPs = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
             builder.UseSqlServer(
-                "Server=.;Database=InvertedIndex_Db;Integrated_security=true;"
+                $"Server=.;Database=InvertedIndex_Db;User Id={dbID};Password={dbPs};"
             );
         }
 

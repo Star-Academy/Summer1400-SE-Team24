@@ -13,7 +13,8 @@ namespace InvertedIndex.Data.Entities
         [MaxLength(5)]
         public string DocID { get; set; }
 
-        public int DocWordAssignID { get; set; }
-        public DocWordAssign DocWordAssign { get; set; }
+        public IList<DocWordAssign> DocWordAssigns { get; set; }
+
+        public override string ToString() => DocID;
     }
 }
