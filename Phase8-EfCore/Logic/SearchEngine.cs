@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using InvertedIndex.Data.Entities;
+using InvertedIndex.Data.Services;
 using InvertedIndex.Models.Keywords;
 
 namespace InvertedIndex.Logic

@@ -7,13 +7,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InvertedIndex.Data.Entities
 {
-    public class Doc
+    public class DocWordAssign
     {
         [Key]
-        [MaxLength(5)]
-        public string DocID { get; set; }
+        public int DocWordID { get; set; }
 
-        public int DocWordAssignID { get; set; }
-        public DocWordAssign DocWordAssign { get; set; }
+        public int WordID { get; set; }
+        public Word Word { get; set; }
+
+        public string DocID { get; set; }
+        public Doc Doc { get; set; }
     }
 }

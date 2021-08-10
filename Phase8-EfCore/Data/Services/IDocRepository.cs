@@ -6,8 +6,8 @@ namespace InvertedIndex.Data.Services
     public interface IDocRepository
     {
         IList<Doc> GetAllDocs();
-        IList<Doc> GetDocs(string word);
-        void AddDoc(string docName, string docText);
+        HashSet<Doc> GetDocs(string word);
+        void AddDocWithWords(string docName, IList<string> words);
         bool IsEmpty();
         void Save();
     }

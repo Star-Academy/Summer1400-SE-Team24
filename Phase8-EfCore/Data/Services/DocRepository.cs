@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using InvertedIndex.Data.Entities;
 
 namespace InvertedIndex.Data.Services
@@ -13,29 +14,48 @@ namespace InvertedIndex.Data.Services
             _dbContext = new AppDbContext();
         }
 
-        public IList<Doc> GetAllDocs()
+        public IList<Doc> GetAllDocs() => _dbContext.Docs.ToList();
+
+        public HashSet<Doc> GetDocs(string word) => 
+            _dbContext.Docs
+            .Include(d => d.DocWordAssign).ThenInclude(a => a.Word)
+            .Where(d => d.DocWordAssign.Word.Text == word).ToHashSet();
+
+        public void AddDocWithWords(string docID, IList<string> words)
         {
-            return _dbContext.Docs.ToList();
+            this.AddDoc(docID);
+
+            int wordId;
+            foreach (var word in words)
+            {
+                wordId = this.AddWord(word);
+
+                _dbContext.DocWordsAssigns.Add(new DocWordAssign()
+                {
+                    DocID = docID,
+                    WordID = wordId
+                });
+            }
         }
 
-        public IList<Doc> GetDocs(string word)
-        {
-            return _dbContext.Docs.Where(d => d.)
-        }
-
-        public void AddDoc(string docName, string docText)
+        public void AddDoc(string docID)
         {
             _dbContext.Docs.Add(new Doc()
             {
-                ID = docName,
-                Text = docText
+                DocID = docID
             });
         }
 
-        public bool IsEmpty()
+        public int AddWord(string word)
         {
-            return !_dbContext.Docs.Any();
+            var addedWord = _dbContext.Words.Add(new Word()
+            {
+                Text = word
+            });
+
+            return addedWord.Entity.WordID;
         }
+        public bool IsEmpty() => !_dbContext.Docs.Any();
 
         public void Save()
         {

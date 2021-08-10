@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InvertedIndex.Data.Entities
 {
-    public class word
+    public class Word
     {
         [Key]
         [MaxLength(5)]

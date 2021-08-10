@@ -22,7 +22,7 @@ namespace InvertedIndex.Logic
 
             foreach (var file in directory.GetFiles())
             {
-                _docManager.AddDoc(file.Name, ReadAllText(file));
+                _docManager.AddDocWithWords(file.Name, Split(ReadAllText(file)));
             }
             _docManager.Save();
         }
@@ -33,6 +33,13 @@ namespace InvertedIndex.Logic
                 throw new FileNotFoundException();
             }
             return File.ReadAllText(file.FullName);
+        }
+
+        public IList<string> Split(string text)
+        {
+            return Regex.Replace(text, "[^a-zA-Z0-9]", " ")
+                .Split(' ').Select(word => word.Trim())
+                .Where(word => !string.IsNullOrEmpty(word)).ToList<string>();
         }
     }
 }

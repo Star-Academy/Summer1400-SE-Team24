@@ -14,6 +14,8 @@ namespace InvertedIndex.Data
             );
         }
 
-        public DbSet<Doc> Docs { get; }
+        public DbSet<Doc> Docs { get; set; }
+        public DbSet<Word> Words { get; set; }
+        public DbSet<DocWordAssign> DocWordsAssigns { get; set; }
     }
 }

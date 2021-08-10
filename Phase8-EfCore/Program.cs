@@ -18,8 +18,7 @@ namespace InvertedIndex
                 fileReader.AddFilesToDataBase(docsPath);
             }
 
-            var index = new Models.InvertedIndex(docHandler.GetAllDocs(), new Mapper());
-            var engine = new SearchEngine(index);
+            var engine = new SearchEngine(docHandler);
 
             Console.Write("Enter Query: ");
             string query = Console.ReadLine();
