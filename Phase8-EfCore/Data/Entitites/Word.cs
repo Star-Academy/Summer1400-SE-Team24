@@ -1,4 +1,4 @@
-using System.Data;
+using System.Collections;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
@@ -7,18 +7,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InvertedIndex.Data.Entities
 {
-    public class Doc
+    public class word
     {
         [Key]
         [MaxLength(5)]
-        public string DocID { get; set; }
-
         public int WordID { get; set; }
-        public Word Word { get; set; }
-
-        public override string ToString()
-        {
-            return ID;
-        }
+        public string Text { get; set; }
+        
+        public IList<Doc> Docs { get; set; }
     }
 }

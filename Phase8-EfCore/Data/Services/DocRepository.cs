@@ -18,6 +18,11 @@ namespace InvertedIndex.Data.Services
             return _dbContext.Docs.ToList();
         }
 
+        public IList<Doc> GetDocs(string word)
+        {
+            return _dbContext.Docs.Where(d => d.)
+        }
+
         public void AddDoc(string docName, string docText)
         {
             _dbContext.Docs.Add(new Doc()

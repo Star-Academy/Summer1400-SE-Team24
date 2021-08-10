@@ -6,11 +6,11 @@ namespace InvertedIndex.Logic
 {
     public class SearchEngine
     {
-        private Models.InvertedIndex index;
+        private IDocRepository _docManager;
 
-        public SearchEngine(Models.InvertedIndex index)
+        public SearchEngine(IDocRepository docManager)
         {
-            this.index = index;
+            this._docManager = docManager;
         }
         public HashSet<Doc> Search(IList<Keyword> keywords)
         {
@@ -18,7 +18,7 @@ namespace InvertedIndex.Logic
 
             foreach(var keyword in keywords) {
                 
-                var newDocs = index.Get(keyword.GetWord());
+                var newDocs = _docManager.GetDocs(keyword.GetWord());
                 docs = keyword.Operate(docs, newDocs);
             }
             return docs;
