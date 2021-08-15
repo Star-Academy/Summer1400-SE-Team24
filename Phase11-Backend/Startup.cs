@@ -37,9 +37,9 @@ namespace InvertedIndex
                 );
             });
 
-            services.AddSingleton<IDocRepository, DocRepository>();
-            services.AddSingleton<SearchEngine, SearchEngine>();
-            services.AddSingleton<QueryParser, QueryParser>();
+            services.AddScoped<IDocRepository, DocRepository>();
+            services.AddScoped<SearchEngine, SearchEngine>();
+            services.AddScoped<QueryParser, QueryParser>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
