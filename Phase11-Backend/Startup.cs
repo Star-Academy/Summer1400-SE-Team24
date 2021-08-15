@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using InvertedIndex.Data;
+using InvertedIndex.Data.Services;
+using InvertedIndex.Logic;
 
 namespace InvertedIndex
 {
@@ -34,6 +36,10 @@ namespace InvertedIndex
                     , dbID, dbPs)
                 );
             });
+
+            services.AddSingleton<IDocRepository, DocRepository>();
+            services.AddSingleton<SearchEngine, SearchEngine>();
+            services.AddSingleton<QueryParser, QueryParser>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using InvertedIndex.Data.Entities;
+using InvertedIndex.Data.Services;
+using InvertedIndex.Logic;
 
 namespace InvertedIndex.Controllers
 {
@@ -11,6 +13,22 @@ namespace InvertedIndex.Controllers
     [Route("[controller]")]
     public class SearchController : ControllerBase
     {
-        
+        private readonly IDocRepository _docHandler;
+        private readonly SearchEngine _engine;
+        private readonly QueryParser _parser;
+
+        public SearchController(IDocRepository docHandler,
+            SearchEngine engine, QueryParser parser)
+        {
+            _docHandler = docHandler;
+            _engine = engine;
+            _parser = parser;
+        }
+
+        [HttpGet]
+        public IEnumerable<Doc> Get(string q)
+        {
+            return _engine.Search(_parser.ParseQuery(q));
+        }
     }
 }
