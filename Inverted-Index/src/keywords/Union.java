@@ -3,16 +3,10 @@ import java.util.Set;
 
 import file_handler.Doc;
 
-public class Union implements Keyword {
-
-    private String word;
+public class Union extends Keyword {
 
     public Union(String word){
-        this.word = word;
-    }
-
-    public String getWord() {
-        return word;
+        super(word);
     }
 
     @Override

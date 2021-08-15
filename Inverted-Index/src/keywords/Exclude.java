@@ -1,20 +1,13 @@
 package keywords;
 import java.util.HashSet;
 import java.util.Set;
-
 import file_handler.Doc;
 
 
-public class Exclude implements Keyword {
-
-    private String word;
+public class Exclude extends Keyword {
 
     public Exclude(String word){
-        this.word = word;
-    }
-
-    public String getWord() {
-        return word;
+        super(word);
     }
     
     @Override

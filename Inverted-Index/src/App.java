@@ -1,8 +1,5 @@
 import java.io.File;
-import java.util.List;
-
 import file_handler.DirectoryReader;
-import file_handler.Doc;
 import file_handler.FileReader;
 import file_handler.IDirectoryReader;
 import search.InvertedIndex;
