@@ -10,9 +10,9 @@ namespace InvertedIndex.Data.Services
     {
         private readonly AppDbContext _dbContext;
 
-        public DocRepository()
+        public DocRepository(AppDbContext dbContext)
         {
-            _dbContext = new AppDbContext();
+            _dbContext = dbContext;
         }
 
         public IList<Doc> GetAllDocs() => _dbContext.Docs.ToList();
