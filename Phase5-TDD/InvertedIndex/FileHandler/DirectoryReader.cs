@@ -6,13 +6,13 @@ namespace InvertedIndex.FileHandler
 {
     public class DirectoryReader : IDirectoryReader
     {
-        public FileInfo[] getFiles(string dirPath)
+        public FileInfo[] GetFiles(string dirPath)
         {
             var path = new DirectoryInfo(dirPath);
             if(path.Exists) {
                 return path.GetFiles();
             }
-            throw new NotADirectoryException(dirPath);
+            throw new NotDirectoryException(dirPath);
         }
     }
 }

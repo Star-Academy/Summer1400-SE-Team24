@@ -5,23 +5,23 @@ namespace InvertedIndex.FileHandler
 {
     public class Doc
     {
-        private string docName;
-        private IList<string> words;
+        private string _docName;
+        private IList<string> _words;
 
         public Doc(string docName, IList<string> words)
         {
-            this.docName = docName;
-            this.words = words;
+            this._docName = docName;
+            this._words = words;
         }
 
-        public IList<string> getWords()
+        public IList<string> GetWords()
         {
-            return words;
+            return _words;
         }
 
-        public string getName()
+        public string GetName()
         {
-            return docName;
+            return _docName;
         }
 
         public override bool Equals(object obj)
@@ -32,17 +32,17 @@ namespace InvertedIndex.FileHandler
                 return false;
             }
             Doc doc = (Doc)obj;
-            return this.docName.Equals(doc.docName);
+            return this._docName.Equals(doc._docName);
         }
         
         public override int GetHashCode()
         {
-            return this.docName.GetHashCode();
+            return this._docName.GetHashCode();
         }
 
         public override string ToString()
         {
-            return $"{this.docName}";
+            return $"{this._docName}";
         }
     }
 }

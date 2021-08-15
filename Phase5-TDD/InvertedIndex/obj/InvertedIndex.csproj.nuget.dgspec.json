@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj": {}
+    "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj": {}
   },
   "projects": {
-    "/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj": {
+    "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj",
+        "projectUniqueName": "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj",
         "projectName": "InvertedIndex",
-        "projectPath": "/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj",
-        "packagesPath": "/home/adib/.nuget/packages/",
-        "outputPath": "/media/adib/Local Disk3/Projects/Star-Academy/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/",
+        "projectPath": "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/InvertedIndex.csproj",
+        "packagesPath": "/home/mdyerfani/.nuget/packages/",
+        "outputPath": "/home/mdyerfani/Repos/Summer1400-SE-Team24/Phase5-TDD/InvertedIndex/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/adib/.nuget/NuGet/NuGet.Config"
+          "/home/mdyerfani/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

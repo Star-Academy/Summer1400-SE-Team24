@@ -8,18 +8,18 @@ namespace InvertedIndex.Search
     {
         private readonly string INCLUDE = "+";
         private readonly string EXCLUDE = "-";
-        public IList<Keyword> parseQuery(string query)
+        public virtual IList<Keyword> ParseQuery(string query)
         {
             var words = query.ToLower().Split(" ");
             var keywords = new List<Keyword>();
 
-            keywords.AddRange(getOrdinaries(words));
-            keywords.AddRange(getUnions(words));
-            keywords.AddRange(getExcludes(words));
+            keywords.AddRange(GetOrdinaries(words));
+            keywords.AddRange(GetUnions(words));
+            keywords.AddRange(GetExcludes(words));
             
             return keywords;
         }
-        public IList<Keyword> getOrdinaries(string[] words)
+        public IList<Keyword> GetOrdinaries(string[] words)
         {
             var ordinaries = new List<Keyword>();
             foreach (var keyword in words) {
@@ -28,7 +28,7 @@ namespace InvertedIndex.Search
             }
             return ordinaries;
         }
-        public IList<Keyword> getUnions(string[] words)
+        public IList<Keyword> GetUnions(string[] words)
         {
             var additionals = new List<Keyword>();
             foreach (var keyword in words) {
@@ -37,7 +37,7 @@ namespace InvertedIndex.Search
             }
             return additionals;
         }
-        public IList<Keyword> getExcludes(string[] words)
+        public IList<Keyword> GetExcludes(string[] words)
         {
             var excludes = new List<Keyword>();
             foreach (var keyword in words) {

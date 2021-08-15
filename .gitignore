@@ -9,6 +9,11 @@ Inverted-Index/docs
 Inverted-Index/bin
 .vscode
 *.jar
+*/.vscode 
+*/*/bin
+*/*/obj
+*/bin
+*/obj
 Phase5-TDD/.vscode 
 Phase5-TDD/*/bin
 Phase5-TDD/InvertedIndex/obj

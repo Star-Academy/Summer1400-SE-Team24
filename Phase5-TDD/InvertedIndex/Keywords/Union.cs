@@ -14,11 +14,11 @@ namespace InvertedIndex.Keywords
             this.word = word;
         }
 
-        public string GetWord()
+        public virtual string GetWord()
         {
             return word;
         }
-        public HashSet<Doc> Operate(HashSet<Doc> docs, HashSet<Doc> newDocs)
+        public virtual HashSet<Doc> Operate(HashSet<Doc> docs, HashSet<Doc> newDocs)
         {
             if(docs == null) {
             return newDocs;

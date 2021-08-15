@@ -11,12 +11,12 @@ namespace InvertedIndex.FileHandler
         {
             var docs = new List<Doc>();
         foreach (var file in files) {
-            docs.Add(new Doc(file.Name, getFileWords(file)));
+            docs.Add(new Doc(file.Name, GetFileWords(file)));
         }
         return docs;
         }
 
-        public IList<string> getFileWords(FileInfo file)
+        public IList<string> GetFileWords(FileInfo file)
         {
 
             if(!file.Exists){

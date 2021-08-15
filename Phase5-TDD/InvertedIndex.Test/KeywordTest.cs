@@ -8,49 +8,71 @@ namespace InvertedIndex.Test
 {
     public class KeywordTest : IDisposable
     {
-        private Keyword keyword;
-        private HashSet<Doc> docs, newDocs, expected_result; 
-        private readonly Doc DOC_TEST1 = new Doc("1", new List<string>(){"some", "words", "are", "here"});
-        private readonly Doc DOC_TEST2 = new Doc("2", new List<string>(){"some", "another", "words"});
-        private readonly Doc DOC_TEST3 = new Doc("1", new List<string>(){"some", "words", "are", "here"});
-        private readonly Doc DOC_TEST4 = new Doc("4", new List<string>(){"here"});
-        private readonly String DUMMY_WORD = "dummyword";
+        private Keyword _keyword;
+        private HashSet<Doc> _docs, _newDocs, _expectedResult;
+        private readonly IList<string> SAMPLE_WORDS = new List<string>() {"some", "words"};
+        private readonly Doc DOC_TEST1;
+        private readonly Doc DOC_TEST2;
+        private readonly Doc DOC_TEST3;
+        private const string DUMMY_WORD = "dummyWord";
+
+        private void initDocs()
+        {
+            _docs = new HashSet<Doc>();
+            _docs.Add(DOC_TEST1);
+            _docs.Add(DOC_TEST2);
+
+            _newDocs = new HashSet<Doc>();
+            _newDocs.Add(DOC_TEST1);
+            _newDocs.Add(DOC_TEST3);
+        }
+
         public KeywordTest()
         {
-            docs = new HashSet<Doc>();
-            expected_result = new HashSet<Doc>();
-            docs.Add(DOC_TEST1);
-            docs.Add(DOC_TEST2);
-            newDocs = new HashSet<Doc>();
-            newDocs.Add(DOC_TEST1);
-            newDocs.Add(DOC_TEST4);
+            DOC_TEST1 = new Doc("1", SAMPLE_WORDS);
+            DOC_TEST2 = new Doc("2", SAMPLE_WORDS);
+            DOC_TEST3 = new Doc("3", SAMPLE_WORDS);
+
+            _expectedResult = new HashSet<Doc>();
+
+            initDocs();
+        }
+
+        [Fact]
+        public void OrdinaryTest()
+        {
+            _keyword = new Ordinary(DUMMY_WORD);
+            _expectedResult.Add(DOC_TEST1);
+            var result = _keyword.Operate(_docs, _newDocs);
+
+            Assert.Equal(_expectedResult, result);
+        }
+
+        [Fact]
+        public void ExcludeTest()
+        {
+            _keyword = new Exclude(DUMMY_WORD);
+            _expectedResult.Add(DOC_TEST2);
+            var result = _keyword.Operate(_docs, _newDocs);
+
+            Assert.Equal(_expectedResult, result);
+        }
+
+        [Fact]
+        public void UnionTest()
+        {
+            _keyword = new Union(DUMMY_WORD);
+            _expectedResult.Add(DOC_TEST1);
+            _expectedResult.Add(DOC_TEST2);
+            _expectedResult.Add(DOC_TEST3);
+            var result = _keyword.Operate(_docs, _newDocs);
+
+            Assert.Equal(_expectedResult, result);
         }
 
         public void Dispose()
         {
-            var result = keyword.Operate(docs, newDocs);
-            Assert.Equal(expected_result, result);
-        }
-
-        [Fact]
-        public void OrdinaryTest(){
-            keyword = new Ordinary(DUMMY_WORD);
-            expected_result.Add(DOC_TEST1);
-        }
-
-        [Fact]
-        public void ExcludeTest(){
-            keyword = new Exclude(DUMMY_WORD);
-            expected_result.Add(DOC_TEST2);
-        
-        }
-
-        [Fact]
-        public void IncludeTest(){
-            keyword = new Union(DUMMY_WORD);
-            expected_result.Add(DOC_TEST1);
-            expected_result.Add(DOC_TEST2);
-            expected_result.Add(DOC_TEST4);
+            GC.Collect();
         }
     }
 }

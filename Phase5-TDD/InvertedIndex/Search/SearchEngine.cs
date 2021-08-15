@@ -13,13 +13,13 @@ namespace InvertedIndex.Search
         {
             this.index = index;
         }
-        public HashSet<Doc> search(IList<Keyword> keywords)
+        public HashSet<Doc> Search(IList<Keyword> keywords)
         {
             HashSet<Doc> docs = null;
 
             foreach(var keyword in keywords) {
                 
-                var newDocs = index.get(keyword.GetWord());
+                var newDocs = index.Get(keyword.GetWord());
                 docs = keyword.Operate(docs, newDocs);
             }
             return docs;
