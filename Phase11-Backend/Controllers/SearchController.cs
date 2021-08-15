@@ -10,7 +10,6 @@ using InvertedIndex.Logic;
 namespace InvertedIndex.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class SearchController : ControllerBase
     {
         private readonly IDocRepository _docHandler;
@@ -26,9 +25,11 @@ namespace InvertedIndex.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Doc> Get(string q)
+        [Route("/{q}")]
+        public IEnumerable<string> Get(string q)
         {
-            return _engine.Search(_parser.ParseQuery(q));
+            return _engine.Search(_parser.ParseQuery(q))
+                .Select(d => d.DocID);
         }
     }
 }
