@@ -1,0 +1,111 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <title>Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div class="search-area">
+      <div class="help">
+        <p>add + before word to include it's matches</p>
+        <p>add - before word to exclude it's matches</p>
+      </div>
+      <div class="search-box">
+        <input type="text" id="search" placeholder="search query" />
+        <i id="search-icon" class="material-icons">search</i>
+        <i id="search-help" class="material-icons">help</i>
+      </div>
+      <p class="error">Please enter search query</p>
+      <a class="search-btn">search</a>
+    </div>
+    <hr />
+    <div class="docs-container">
+      <p class="error">No matches found</p>
+    </div>
+  </body>
+  <style>
+    .search-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25%;
+    }
+    .search-box {
+      width: 70%;
+      position: relative;
+    }
+    .error {
+      display: none;
+      color: red;
+    }
+    #search {
+      margin: 10px;
+      width: 90%;
+      padding: 20px;
+      padding-left: 50px;
+      border: none;
+      box-shadow: 0 0 10px 0 grey;
+      border-radius: 25px;
+      font-size: medium;
+    }
+    #search-icon {
+      color: gray;
+      position: absolute;
+      left: 4%;
+      top: 33.3%;
+      border-right: 1px solid lightgrey;
+      padding-right: 5px;
+    }
+    #search:focus {
+      outline: none;
+    }
+    #search-help {
+      color: chocolate;
+      position: absolute;
+      top: 32%;
+      right: 11%;
+      cursor: pointer;
+      border: 2px solid brown;
+      border-radius: 50%;
+      box-shadow: 0 0 4px rosybrown;
+    }
+    #search-help:hover {
+      color: brown;
+      border-color: burlywood;
+    }
+    .search-btn {
+      text-decoration: none;
+      margin: 20px;
+      border-radius: 15px;
+      background-color: dodgerblue;
+      padding: 10px 30px;
+      color: white;
+      box-shadow: 0 0 5px grey;
+      text-shadow: 0 0 10px black;
+    }
+    .search-btn:hover {
+      background-color: lightblue;
+      color: black;
+    }
+    .help {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      border: 1px solid grey;
+      box-shadow: 0 0 5px grey;
+      padding: 10px;
+      border-radius: 5px;
+      color: darkslategrey;
+      right: 21%;
+      top: 14%;
+    }
+  </style>
+</html>
