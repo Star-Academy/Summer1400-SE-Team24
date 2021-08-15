@@ -1,3 +1,12 @@
+*.class
+*/docs
+*/.vscode
+/.vscode
+*/bin
+*/obj
+Inverted-Index/.vscode
+Inverted-Index/docs
+Inverted-Index/bin
 .vscode
 *.jar
 */.vscode 
