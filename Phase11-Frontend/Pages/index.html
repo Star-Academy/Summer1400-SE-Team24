@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="style.css">
+    <title>Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <img src="images/search.jpg" alt="search" class="bg-pic"/>
+    <div class="search-area">
+      <div class="help">
+        <p>add + before word to include it's matches</p>
+        <p>add - before word to exclude it's matches</p>
+      </div>
+      <div class="search-box">
+        <input type="text" id="search" placeholder="Search query" />
+        <i id="search-icon" class="material-icons">search</i>
+        <i id="search-help" class="material-icons">help</i>
+      </div>
+      <p class="error">Please enter search query</p>
+      <a class="search-btn">search</a>
+    </div>
+    <div class="hr"></div>
+    <div class="docs-container">
+      <p class="error">No matches found</p>
+    </div>
+  </body>
+</html>
