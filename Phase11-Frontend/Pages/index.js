@@ -19,11 +19,13 @@ $(document).ready(() => {
   });
 
   function addDocs(q) {
+    $(".docs-container").children().hide(100);
     $.get(BASE_URL + q)
       .then((docs) => {
-        $(".docs-container").children().hide(200);
+        if (!docs || !docs.length) throw "Empty";
+
         docs.forEach((doc) => {
-          $(".docs-container").add(`
+          $(".docs-container").append(`
                 <div class='doc'>
                   <h4 class='doc-title'>${doc}</h4>
                 </div>

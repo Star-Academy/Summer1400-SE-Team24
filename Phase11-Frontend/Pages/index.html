@@ -36,7 +36,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: 25%;
+      margin-top: 17%;
     }
     .search-box {
       width: 70%;
@@ -50,7 +50,7 @@
       margin: 10px;
       width: 90%;
       padding: 20px;
-      padding-left: 50px;
+      padding-left: 10%;
       border: none;
       box-shadow: 0 0 10px 0 grey;
       border-radius: 25px;
@@ -90,6 +90,7 @@
       color: white;
       box-shadow: 0 0 5px grey;
       text-shadow: 0 0 10px black;
+      cursor: pointer;
     }
     .search-btn:hover {
       background-color: lightblue;
@@ -100,12 +101,38 @@
       position: absolute;
       z-index: 1;
       border: 1px solid grey;
-      box-shadow: 0 0 5px grey;
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 3px;
       color: darkslategrey;
       right: 21%;
       top: 14%;
+    }
+    .docs-container {
+      display: flex;
+      margin: 20px;
+      padding: 10px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow-y: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .docs-container::-webkit-scrollbar {
+      display: none;
+    }
+    .doc {
+      margin: 10px;
+      border: 1px solid grey;
+      padding: 5px 30px;
+      border-radius: 5px;
+      color: purple;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .doc:hover {
+      text-decoration: none;
+      color: blue;
+      box-shadow: 0 0 5px grey;
     }
   </style>
 </html>
