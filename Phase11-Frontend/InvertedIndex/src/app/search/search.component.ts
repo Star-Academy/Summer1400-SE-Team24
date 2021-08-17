@@ -18,11 +18,11 @@ export class SearchComponent {
   constructor(private service: ApiClientService) {}
 
   submit(): void {
+    this.error = "";
     if (!this.query.value) {
       this.error = 'Please enter a query';
     } else {
       this.docs$ = this.service.getDocs(this.query.value);
-      if (!this.docs$) this.error = 'No matches found';
     }
   }
 }

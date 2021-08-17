@@ -8,22 +8,17 @@ import { ResultComponent } from './result/result.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ApiClientService } from './api-client.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule, MatIcon } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent,
-    ResultComponent
-  ],
+  declarations: [AppComponent, SearchComponent, ResultComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [
-    ApiClientService
-  ],
-  bootstrap: [AppComponent]
+  providers: [ApiClientService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

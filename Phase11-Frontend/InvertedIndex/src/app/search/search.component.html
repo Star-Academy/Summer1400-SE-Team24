@@ -1,20 +1,22 @@
-<img src="images/search.jpg" alt="search" class="bg-pic" />
 <div class="search-area">
   <div class="help">
     <p>add + before word to include it's matches</p>
     <p>add - before word to exclude it's matches</p>
   </div>
   <div class="search-box">
-    <input type="text" id="search" placeholder="Search query" [formControl]="query" />
-    <i id="search-icon" class="material-icons">search</i>
-    <i id="search-help" class="material-icons">help</i>
+    <input
+      type="text"
+      id="search"
+      placeholder="Search query"
+      [formControl]="query"
+    />
   </div>
   <p class="error">{{ error }}</p>
-  <a class="search-btn" (click)="submit()" >search</a>
+  <a class="search-btn" (click)="submit()">search</a>
 </div>
 <div class="hr"></div>
 <div class="docs-container">
-  <div *ngFor="let doc of docs$ | async" class="doc" >
+  <div *ngFor="let doc of docs$ | async" class="doc">
     <h4 class="doc-title">{{ doc }}</h4>
   </div>
 </div>

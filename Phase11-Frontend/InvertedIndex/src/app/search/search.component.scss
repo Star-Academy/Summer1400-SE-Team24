@@ -16,36 +16,13 @@
   margin: 10px;
   width: 90%;
   padding: 20px;
-  padding-left: 10%;
   border: none;
   box-shadow: 0 0 10px 0 grey;
   border-radius: 25px;
   font-size: medium;
 }
-#search-icon {
-  color: gray;
-  position: absolute;
-  left: 4%;
-  top: 33.3%;
-  border-right: 1px solid lightgrey;
-  padding-right: 5px;
-}
 #search:focus {
   outline: none;
-}
-#search-help {
-  color: chocolate;
-  position: absolute;
-  top: 32%;
-  right: 11%;
-  cursor: pointer;
-  border: 2px solid brown;
-  border-radius: 50%;
-  box-shadow: 0 0 4px rosybrown;
-}
-#search-help:hover {
-  color: brown;
-  border-color: burlywood;
 }
 .search-btn {
   text-decoration: none;
@@ -63,7 +40,6 @@
   color: black;
 }
 .help {
-  display: none;
   position: absolute;
   z-index: 1;
   border: 1px solid grey;
@@ -101,14 +77,6 @@
   text-decoration: none;
   color: blue;
   box-shadow: 0 0 5px grey;
-}
-.bg-pic {
-  height: 100%;
-  position: absolute;
-  margin: 0;
-  top: 0;
-  z-index: -1;
-  filter: blur(3px);
 }
 body {
   overflow: hidden;
