@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { ResultComponent } from './result/result.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ApiClientService } from './api-client.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,13 @@ import { ResultComponent } from './result/result.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ApiClientService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

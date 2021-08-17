@@ -28,7 +28,7 @@ namespace InvertedIndex
             string dbID = Environment.GetEnvironmentVariable("DB_ID");
             string dbPs = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
-            services.AddDbContext<AppDbContext>(options => 
+            services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(
                     String.Format(
@@ -54,6 +54,11 @@ namespace InvertedIndex
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options =>
+            {
+                options.AllowAnyOrigin();
+            });
 
             app.UseEndpoints(endpoints =>
             {
