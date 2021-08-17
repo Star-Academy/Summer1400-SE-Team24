@@ -1,0 +1,90 @@
+.search-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 17%;
+}
+.search-box {
+  width: 70%;
+  position: relative;
+}
+.error {
+  color: red;
+}
+#search {
+  margin: 10px;
+  width: 90%;
+  padding: 20px;
+  border: none;
+  box-shadow: 0 0 10px 0 grey;
+  border-radius: 25px;
+  font-size: medium;
+}
+#search:focus {
+  outline: none;
+}
+.search-btn {
+  text-decoration: none;
+  margin: 20px;
+  border-radius: 15px;
+  background-color: dodgerblue;
+  padding: 10px 30px;
+  color: white;
+  box-shadow: 0 0 10px black;
+  text-shadow: 0 0 10px black;
+  cursor: pointer;
+}
+.search-btn:hover {
+  background-color: lightblue;
+  color: black;
+}
+.help {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 3px;
+  color: darkslategrey;
+  right: 21%;
+  top: 14%;
+  background-color: whitesmoke;
+}
+.docs-container {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.docs-container::-webkit-scrollbar {
+  display: none;
+}
+.doc {
+  margin: 10px;
+  border: 1px solid grey;
+  padding: 5px 30px;
+  border-radius: 5px;
+  color: purple;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+.doc:hover {
+  text-decoration: none;
+  color: blue;
+  box-shadow: 0 0 5px grey;
+}
+body {
+  overflow: hidden;
+}
+div.hr {
+  height: 1px;
+  width: 95%;
+  background-color: grey;
+  margin: auto;
+  box-shadow: 0 0 8px grey;
+}
